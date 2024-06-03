@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+     <!-- Custom CSS Link -->
+     <link href="{{ asset('css/client/dashboard.css') }}" rel="stylesheet">
 </head>
 <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
