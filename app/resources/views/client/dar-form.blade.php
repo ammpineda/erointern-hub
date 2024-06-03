@@ -9,6 +9,8 @@
     <link href="{{ asset('css/client/navbar.css') }}" rel="stylesheet">
 
 </head>
+@include('navbar')
+
 <body>
     <h1 id="report-title">Daily Accomplishment Report</h1>
 
