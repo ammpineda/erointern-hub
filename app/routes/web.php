@@ -10,4 +10,6 @@ Route::get('/dashboard', function () {
     return view('client/dashboard');
 });
 
-
+Route::get('/dar', function () {
+    return view('client/dar-form');
+});
