@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('daily_accomplishments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->text('description');
+            $table->dateTime('clock_in_at');
+            $table->dateTime('clock_out_at')->nullable();
+            $table->string('clock_in_image')->nullable();
+            $table->string('clock_out_image')->nullable();
+            $table->string('attachment_file')->nullable();
             $table->timestamps();
         });
     }

@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('ojt_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->integer('required_hours');
+            $table->integer('rendered_hours');
+            $table->integer('remaining_hours');
+            $table->boolean('has_endorsement_letter');
+            $table->boolean('has_acceptance_letter');
+            $table->date('onboard_at');
+            $table->date('exit_at')->nullable();
             $table->timestamps();
         });
     }
