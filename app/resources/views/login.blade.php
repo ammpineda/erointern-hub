@@ -11,27 +11,24 @@
 </head>
 <body>
 
-<form action="action_page.php" method="post">
-    <div class="imgcontainer">
-      <img src="login-logo.png" alt="logo" class="logo">
-    </div>
+@if ($errors->any())
+        <div class="error-container">
+            <h4>Authentication failed.</h4>
+            <p>{{ $errors->first() }}</p>
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="error-container">
+            <h4>Authentication failed.</h4>
+            <p>{{ session('error') }}</p>
+        </div>
+    @endif
 
-    <div class="container">
-      <label for="email"><b>e-mail</b></label>
-      <input type="text" placeholder="Enter e-mail" name="email" required>
-
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
-
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn">Cancel</button>
-    </div>
+<form action="{{ route('login') }}" method="post">
+@csrf
+      <input type="email" name="email" placeholder="Email Address" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="submit" value="Login">
   </form>
 
 </body>
