@@ -42,13 +42,12 @@ class AdminController extends Controller
             $user->middle_name = $request->input('middle_name');
             $user->last_name = $request->input('last_name');
             $user->email = $request->input('email');
-            $user->password = bcrypt($request->input('password')); // Hash the password
+            $user->password = $request->input('password');
             $user->save();
 
             // Commit transaction
             DB::commit();
-
-            return redirect()->route('login')->with('success', 'Intern registered successfully!');
+            return redirect()->route('manage-interns')->with('success', 'Intern registered successfully!');
         } catch (\Exception $e) {
             // Rollback transaction
             DB::rollBack();

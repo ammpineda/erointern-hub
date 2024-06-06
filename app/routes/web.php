@@ -24,6 +24,8 @@ Route::get('/admin/manage-interns', function () {
     return view('management/manage-interns');
 })->name('manage-interns');
 
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+
 // Register route for POST requests
 Route::post('/register', [AdminController::class, 'register'])->name('register');
 
