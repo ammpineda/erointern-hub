@@ -25,7 +25,7 @@ class LoginController extends Controller
         // change to password_verify later
         if ($request->password !== $user->password) {
             return redirect()->back()->withErrors(['error' => 'Incorrect Password.']);
-        } 
+        }
 
         if($user->type == 'intern'){
             Session::put('id', $user->id);
@@ -34,8 +34,12 @@ class LoginController extends Controller
             return redirect()->route('intern-dashboard')->with('success', 'You may now enroll or access your enrolled courses.');
         } elseif ($user->type == 'admin'){
             // return to admin-dashboard view
+            Session::put('id', $user->id);
+            Session::put('is_intern', false);
+            Session::put('is_admin', true);
+            return redirect()->route('admin-dashboard')->with('success', 'You may now enroll or access your enrolled courses.');
         }
 
-        
+
     }
 }
