@@ -1,0 +1,43 @@
+body {
+    background-image: url('/images/dbbg.png');
+    background-size: 10000px;
+    background-repeat: no-repeat;
+}
+
+body, h2, p, th, td, a {
+    color: white;
+}
+
+.button {
+    position: center; 
+    top: 5px; 
+    left: -5px; 
+    height: 44px; 
+    padding: 0 16px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-family: DM Sans; 
+    font-size: 16px; 
+    line-height: 26px; 
+    font-weight: 700; 
+    color: #FFFFFFFF; /* white */
+    background: #3E3EE0FF; /* primary-500 */
+    opacity: 1; 
+    border: none; 
+    border-radius: 4px; /* border-m */
+  }
+  /* Hover */
+  .button:hover {
+    color: #FFFFFFFF; /* white */
+    background: #2828DCFF; /* primary-550 */
+  }
+  /* Pressed */
+  .button:hover:active {
+    color: #FFFFFFFF; /* white */
+    background: #1D1DB2FF; /* primary-650 */
+  }
+  /* Disabled */
+  .button:disabled {
+    opacity: 0.4; 
+  }

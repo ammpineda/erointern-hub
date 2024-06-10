@@ -11,6 +11,7 @@
 <body>
     @include('navbar')
     <!-- Section for displaying rendered hours -->
+    <a href="#" class="button">Work Session</a>
     <section id="rendered-hours">
         <h2>Rendered Hours</h2>
         <p>100 out of 200 minimum hours.</p>
