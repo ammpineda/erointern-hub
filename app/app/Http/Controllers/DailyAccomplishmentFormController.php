@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 use App\Models\DailyAccomplishment;
@@ -20,33 +21,35 @@ class DailyAccomplishmentFormController extends Controller
                 'clock_out_at' => 'required|date_format:H:i',
                 'clock_in_image' => 'nullable|image|max:2048',
                 'clock_out_image' => 'nullable|image|max:2048',
-                'attachment_file' => 'nullable|file|max:2048',
+                'attachment_file' => 'required|file|max:2048',
             ]);
 
+            $clockIn = Carbon::createFromFormat('H:i', $validatedData['clock_in_at']);
+            $clockOut = Carbon::createFromFormat('H:i', $validatedData['clock_out_at']);
             // Create a new DailyAccomplishment instance
+
             $dar = new DailyAccomplishment();
             $dar->title = $validatedData['title'];
             $dar->description = $validatedData['description'];
-            $dar->clock_in_at = $validatedData['clock_in_at'];
-            $dar->clock_out_at = $validatedData['clock_out_at'];
-            $dar->user_id = Session::get('id'); // Associate the DAR with the logged-in user ID
 
-            // Save the DailyAccomplishment to the database
+            $dar->user_id = Session::get('id'); // Associate the DAR with the logged-in user ID
+            $dar->clock_in_at = $clockIn;  // Assuming $clockIn is a valid Carbon instance
+            $dar->clock_out_at = $clockOut; // Assuming $clockOut is a valid Carbon instance
             $dar->save();
 
             // Handle clock in and clock out images
             if ($request->hasFile('clock_in_image')) {
-                $dar->clock_in_image = $request->file('clock_in_image')->store('clock_images');
+                $dar->clock_in_image = $request->file('clock_in_image')->store('clock_in_images');
                 $dar->save();
             }
             if ($request->hasFile('clock_out_image')) {
-                $dar->clock_out_image = $request->file('clock_out_image')->store('clock_images');
+                $dar->clock_out_image = $request->file('clock_out_image')->store('clock_out_images');
                 $dar->save();
             }
 
             // Handle attachment file
             if ($request->hasFile('attachment_file')) {
-                $dar->attachment_file = $request->file('attachment_file')->store('attachments');
+                $dar->attachment_file = $request->file('attachment_file')->store('attachment_file');
                 $dar->save();
             }
 
