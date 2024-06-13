@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\DailyAccomplishment;
 use Illuminate\Support\Facades\Session;
 
-class DailyAccomplishmentController extends Controller
+class DailyAccomplishmentFormController extends Controller
 {
     public function submit(Request $request)
     {
