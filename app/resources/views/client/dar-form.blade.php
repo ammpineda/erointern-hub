@@ -14,7 +14,8 @@
 <body>
     <h1 id="report-title">Daily Accomplishment Report</h1>
 
-    <form>
+    <form action="{{ route('submit.daily.report') }}" method="post">
+        @csrf
         <div>
             <label for="title">Title</label>
             <input type="text" id="title" name="title">
