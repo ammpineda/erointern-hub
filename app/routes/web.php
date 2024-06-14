@@ -26,10 +26,8 @@ Route::get('/admin/manage-interns', function () {
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-// Register route for POST requests
 Route::post('/register', [AdminController::class, 'register'])->name('register');
 
-// Route for managing interns (GET request)
 Route::get('admin/manage-interns', [AdminController::class, 'manageInterns'])->name('manage-interns');
 
 Route::post('/submit-daily-report', [DailyAccomplishmentFormController::class, 'submit'])->name('submit.daily.report');
