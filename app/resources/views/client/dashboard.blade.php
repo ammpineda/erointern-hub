@@ -12,6 +12,7 @@
 
     @include('navbar')
     <!-- Section for displaying rendered hours -->
+    <a href="/dar" >create dar</a>
     <a href="#" class="button">Work Session</a>
     <div class="sections-container">
     <section id="rendered-hours">
