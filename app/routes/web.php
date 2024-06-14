@@ -1,12 +1,12 @@
 <?php
-
+use App\Http\Controllers\DailyAccomplishmentFormController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('login');
-})->name('login');
+})->name('login.form');
 
 Route::get('/dashboard', function () {
     return view('client/dashboard');
@@ -31,3 +31,5 @@ Route::post('/register', [AdminController::class, 'register'])->name('register')
 
 // Route for managing interns (GET request)
 Route::get('admin/manage-interns', [AdminController::class, 'manageInterns'])->name('manage-interns');
+
+Route::post('/submit-daily-report', [DailyAccomplishmentFormController::class, 'submit'])->name('submit.daily.report');
