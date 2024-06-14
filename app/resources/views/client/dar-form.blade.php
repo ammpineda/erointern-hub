@@ -65,12 +65,15 @@
     </div>
 
     <div>
-        <button type="button">Cancel</button>
+        <button type="button" onclick="cancelForm()">Cancel</button>
         <button type="submit">Submit</button>
     </div>
 </form>
 
 <script>
+    function cancelForm() {
+        window.location.href = '/dashboard';
+    }
     document.addEventListener('DOMContentLoaded', function() {
         var today = new Date().toISOString().split('T')[0];
         document.getElementById('report-title').textContent += ' (' + today + ')';
