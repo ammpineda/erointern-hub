@@ -2,6 +2,7 @@
 use App\Http\Controllers\DailyAccomplishmentFormController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -30,6 +31,9 @@ Route::get('/admin/manage-interns', function () {
 Route::get('/admin/manage-dars', function () {
     return view('management/manage-dars');
 })->name('manage-dars');
+Route::get('/admin/manage-announcements', function () {
+    return view('management/manage-announcements');
+})->name('manage-announcements');
 
 //route for login
 Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -41,3 +45,7 @@ Route::get('admin/manage-interns', [AdminController::class, 'manageInterns'])->n
 Route::post('/submit-daily-report', [DailyAccomplishmentFormController::class, 'submit'])->name('create-dar');
 //route for displaying dars for the admin page
 Route::get('admin/manage-dars', [DailyAccomplishmentFormController::class, 'index'])->name('display-dars');
+//route for displaying announcements
+Route::get('admin/manage-announcements', [AnnouncementController::class, 'displayAnnouncements'])->name('display-announcements');
+//route for adding announcements
+Route::post('/admin/add-announce', [AnnouncementController::class, 'addAnnouncement'])->name('add-announcement');

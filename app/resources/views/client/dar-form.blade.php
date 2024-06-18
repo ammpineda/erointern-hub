@@ -28,7 +28,7 @@
 
 <h1 id="report-title">Daily Accomplishment Report</h1>
 
-<form action="{{ route('submit.daily.report') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('create-dar') }}" method="post" enctype="multipart/form-data">
     @csrf <!-- CSRF Token for Laravel -->
 
     <div>
