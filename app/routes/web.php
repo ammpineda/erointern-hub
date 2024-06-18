@@ -3,7 +3,6 @@ use App\Http\Controllers\DailyAccomplishmentFormController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ManageDarController;
 
 
 ///////view routes/////////////////////////////////////////
@@ -34,11 +33,11 @@ Route::get('/admin/manage-dars', function () {
 
 //route for login
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-//route for registering users via admin
+//route for registering interns via admin
 Route::post('/register', [AdminController::class, 'register'])->name('register');
 //route for displaying interns in manage interns page
-Route::get('admin/manage-interns', [AdminController::class, 'manageInterns'])->name('manage-interns');
+Route::get('admin/manage-interns', [AdminController::class, 'manageInterns'])->name('display-interns');
 //route for creating new dars by the interns
-Route::post('/submit-daily-report', [DailyAccomplishmentFormController::class, 'submit'])->name('submit.daily.report');
+Route::post('/submit-daily-report', [DailyAccomplishmentFormController::class, 'submit'])->name('create-dar');
 //route for displaying dars for the admin page
-Route::get('admin/manage-dars', [ManageDarController::class, 'index'])->name('manage-dars.index');
+Route::get('admin/manage-dars', [DailyAccomplishmentFormController::class, 'index'])->name('display-dars');
