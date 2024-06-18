@@ -9,10 +9,11 @@
     <link href="{{ asset('css/client/dashboard.css') }}" rel="stylesheet">
 </head>
 <body>
+
     @include('navbar')
     <!-- Section for displaying rendered hours -->
-    <a href="/dar" >create dar</a>
-    <a href="#" class="button">Work Session</a>
+    <a href="#" class="button">Clock In</a>
+    <div class="sections-container">
     <section id="rendered-hours">
         <h2>Rendered Hours</h2>
         <p>100 out of 200 minimum hours.</p>
@@ -44,7 +45,7 @@
             </tbody>
         </table>
     </section>
-
+    </div>
     <!-- Section for displaying all the daily accomplishment report forms in a table -->
     <section id="daily-reports">
         <h2>Daily Accomplishment Reports</h2>
@@ -57,10 +58,37 @@
                     <th>Clock-Out</th>
                     <th>Rendered Hours</th>
                     <th>Description</th>
-                    <th></th>
+                    <th><a href="#">+ Export List</a></th>
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>2024-06-03</td>
+                    <td>Sample Title</td>
+                    <td>9:00 AM</td>
+                    <td>1:00 PM</td>
+                    <td>4</td>
+                    <td>Sample description goes here.</td>
+                    <td><a href="#">view</a></td>
+                </tr>
+                <tr>
+                    <td>2024-06-03</td>
+                    <td>Sample Title</td>
+                    <td>9:00 AM</td>
+                    <td>1:00 PM</td>
+                    <td>4</td>
+                    <td>Sample description goes here.</td>
+                    <td><a href="#">view</a></td>
+                </tr>
+                <tr>
+                    <td>2024-06-03</td>
+                    <td>Sample Title</td>
+                    <td>9:00 AM</td>
+                    <td>1:00 PM</td>
+                    <td>4</td>
+                    <td>Sample description goes here.</td>
+                    <td><a href="#">view</a></td>
+                </tr>
                 <tr>
                     <td>2024-06-03</td>
                     <td>Sample Title</td>

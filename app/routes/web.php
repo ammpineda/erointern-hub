@@ -32,9 +32,6 @@ Route::get('/admin/manage-dars', function () {
     return view('management/manage-dars');
 })->name('manage-dars');
 
-///////////////////////////////////////////////////////////
-
-
 //route for login
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 //route for registering users via admin

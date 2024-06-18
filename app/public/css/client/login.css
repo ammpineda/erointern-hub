@@ -1,0 +1,181 @@
+body {
+    background-image: url('/images/dbbg.png');
+    background-size: 10000px;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh; /* Ensures body takes full viewport height */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    overflow-y: hidden; /* Prevents vertical scrolling */
+}
+
+.navbar {
+    background-color: #001a33;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed; /* Fixes navbar to the top */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures navbar is above other elements */
+    box-sizing: border-box;
+}
+
+.logo {
+    height: 40px;
+}
+
+.icons {
+    display: flex;
+    gap: 20px; /* Adds space between icons */
+}
+
+.middle-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 80px auto 40px; /* Ensures the image is fully visible and centered, added more margin */
+}
+
+.container {
+    position: relative; /* Changed from absolute to relative to ensure proper positioning */
+    margin: 40px auto; /* Added margin for spacing */
+    width: 90%; /* Adjusted to be responsive */
+    max-width: 519px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px #171a1f, 0px 0px 2px #171a1f;
+    padding: 20px;
+    text-align: left;
+}
+
+.login-box {
+    color: #000000; /* Text color inside container */
+}
+
+.text.welcome {
+    font-size: 24px; /* Increased font size */
+    font-weight: bold; /* Bolder text */
+    margin-bottom: 20px; /* Increased margin */
+    color: #000000; /* Text color inside container */
+}
+
+.text.login {
+    margin-bottom: 10px;
+    color: #000000; /* Text color inside container */
+}
+
+.textbox {
+    margin-bottom: 20px; /* Added space between text boxes */
+    position: relative;
+}
+
+.textbox input {
+    width: 100%; /* Full width of the container */
+    height: 44px;
+    padding-left: 40px; /* Adjusted padding to accommodate icon */
+    padding-right: 40px; /* Adjusted padding for the eye icon */
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    background: #F3F4F6;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.textbox i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #A0AEC0;
+}
+
+.textbox i.fa-envelope {
+    left: 10px; /* Positioning the envelope icon */
+}
+
+.textbox i.fa-lock {
+    left: 10px; /* Positioning the lock icon */
+}
+
+.textbox i.fa-eye {
+    right: 10px; /* Positioning the eye icon */
+    cursor: pointer; /* Makes the eye icon clickable */
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox input {
+    display: none;
+}
+
+.checkbox label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox .outer-square {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    border-width: 1px;
+    border-style: solid;
+    margin-right: 8px;
+}
+
+.checkbox .inner-square {
+    width: 8px;
+    height: 8px;
+    border-radius: 0;
+    background: #565E6C;
+    display: none;
+}
+
+.checkbox input:checked + label .inner-square {
+    display: block; 
+}
+
+.button {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #FFFFFF;
+    background: #3E3EE0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #2828DC;
+}
+
+.button:active {
+    background: #1D1DB2;
+}
+
+.button:disabled {
+    opacity: 0.4;
+}

@@ -9,24 +9,32 @@ body, h2, p, th, td, a {
 }
 
 .button {
-    position: center; 
-    top: 5px; 
-    left: -5px; 
-    height: 44px; 
-    padding: 0 16px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    font-family: DM Sans; 
-    font-size: 16px; 
-    line-height: 26px; 
-    font-weight: 700; 
-    color: #FFFFFFFF; /* white */
-    background: #3E3EE0FF; /* primary-500 */
-    opacity: 1; 
-    border: none; 
-    border-radius: 4px; /* border-m */
-  }
+  position: relative; 
+  top: 1px; 
+  left: 0; 
+  height: 44px; 
+  padding: 0 16px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-family: DM Sans; 
+  font-size: 16px; 
+  line-height: 26px; 
+  font-weight: 700; 
+  color: #FFFFFFFF; 
+  background: #3E3EE0FF; 
+  opacity: 1; 
+  border: none; 
+  border-radius: 4px; 
+  max-width: 200px; 
+  width: auto; 
+  margin: auto; 
+  margin-top: 20px;
+  text-decoration: none; 
+  
+}
+
+
   /* Hover */
   .button:hover {
     color: #FFFFFFFF; /* white */
@@ -41,3 +49,74 @@ body, h2, p, th, td, a {
   .button:disabled {
     opacity: 0.4; 
   }
+
+  .line {
+    position: relative; /* Changed from 'absolute' to 'relative' */
+    width: 100%; /* This will make the line span the full width of its container */
+    border-top: 1px solid #DEE1E6FF; /* Keeps the line visible */
+    margin-top: 20px; /* Adds space above the line */
+    margin-bottom: 20px; /* Adds space below the line */
+  }
+  
+
+  .sections-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px; /* This will create space between the sections */
+    padding-top: 20px;
+}
+
+
+/* CSS for each section */
+#rendered-hours, #schedule, #announcements {
+    flex: 1;
+    margin: 10px; /* Adds margin around each section */
+    padding: 10px; /* Adds padding inside each section */
+    border: 1px solid #ccc; /* Adds a border around each section */
+    box-shadow: 0px 0px 10px #ccc; /* Optional: Adds a shadow for depth */
+}
+
+
+#daily-reports {
+  font-family: 'Arial', sans-serif; /* Improves readability */
+  max-width: 100%; /* Ensures the table is not wider than the container */
+  margin: auto; /* Centers the table */
+  overflow-x: auto; /* Adds horizontal scrolling on small screens */
+}
+
+#daily-reports h2 {
+  text-align: center; /* Centers the title */
+  margin-bottom: 20px; /* Adds space below the title */
+}
+
+#daily-reports table {
+  width: 100%; /* Makes the table use the full width */
+  border-collapse: collapse; /* Removes gaps between cells */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds subtle shadow for depth */
+}
+
+#daily-reports th, #daily-reports td {
+  padding: 10px; /* Adds space inside cells */
+  text-align: left; /* Aligns text to the left */
+  border-bottom: 1px solid #ddd; /* Adds a line under each row */
+}
+
+#daily-reports tr:nth-child(even) {
+  background-color: #0408f100; /* Zebra striping for rows */
+}
+
+#daily-reports th {
+  background: #0C3C61FF; /* Darker background for headers */
+  color: white; /* White text for headers */
+}
+
+#daily-reports a {
+  background: rgba(12, 60, 97, 0); /* Makes links match the header color */
+  text-decoration: none; /* Removes underline from links */
+}
+
+#daily-reports a:hover {
+  text-decoration: underline; /* Adds underline on hover for links */
+}
+

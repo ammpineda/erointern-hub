@@ -51,7 +51,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <img src="{{ asset('images/nav_logo.png') }}" alt="logo" class="logo">
+        <img src="{{ asset('images/loginimg.png') }}" alt="logo" class="logo">
         <span class="navbar-text">ERovoutika Electronics Robotics Automation - InternHub</span>
         <a href=""><img src="{{ asset('images/icons8-settings-50.png') }}" class="icon"></a> 
         <a href=""><img src="{{ asset('images/icons8-bell-48.png')}}" class="icon"></a>
