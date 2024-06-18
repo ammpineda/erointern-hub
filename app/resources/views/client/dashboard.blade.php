@@ -12,8 +12,7 @@
 
     @include('navbar')
     <!-- Section for displaying rendered hours -->
-    <a href="" class="button">Work Session</a>
-    <div class="line"></div>
+    <a href="#" class="button">Work Session</a>
     <div class="sections-container">
     <section id="rendered-hours">
         <h2>Rendered Hours</h2>
