@@ -1,5 +1,7 @@
 body {
-    background-color: #001f3f;
+    background-image: url('/images/dbbg.png');
+    background-size: 10000px;
+    background-repeat: no-repeat;
     color: #fff;
     font-family: 'Lato', sans-serif;
     margin: 0;
@@ -143,6 +145,10 @@ body {
     border-radius: 0;
     background: #565E6C;
     display: none;
+}
+
+.checkbox input:checked + label .inner-square {
+    display: block; 
 }
 
 .button {
