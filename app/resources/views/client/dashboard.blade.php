@@ -12,7 +12,8 @@
 
     @include('navbar')
     <!-- Section for displaying rendered hours -->
-    <a href="#" class="button">Work Session</a>
+    <a href="" class="button">Work Session</a>
+    <div class="line"></div>
     <div class="sections-container">
     <section id="rendered-hours">
         <h2>Rendered Hours</h2>
@@ -58,10 +59,37 @@
                     <th>Clock-Out</th>
                     <th>Rendered Hours</th>
                     <th>Description</th>
-                    <th></th>
+                    <th><a href="#">+ Export List</a></th>
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>2024-06-03</td>
+                    <td>Sample Title</td>
+                    <td>9:00 AM</td>
+                    <td>1:00 PM</td>
+                    <td>4</td>
+                    <td>Sample description goes here.</td>
+                    <td><a href="#">view</a></td>
+                </tr>
+                <tr>
+                    <td>2024-06-03</td>
+                    <td>Sample Title</td>
+                    <td>9:00 AM</td>
+                    <td>1:00 PM</td>
+                    <td>4</td>
+                    <td>Sample description goes here.</td>
+                    <td><a href="#">view</a></td>
+                </tr>
+                <tr>
+                    <td>2024-06-03</td>
+                    <td>Sample Title</td>
+                    <td>9:00 AM</td>
+                    <td>1:00 PM</td>
+                    <td>4</td>
+                    <td>Sample description goes here.</td>
+                    <td><a href="#">view</a></td>
+                </tr>
                 <tr>
                     <td>2024-06-03</td>
                     <td>Sample Title</td>
