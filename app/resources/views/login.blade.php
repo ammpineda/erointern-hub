@@ -54,15 +54,6 @@
                 <input type="password" name="password" placeholder="Password" required>
                 <i class="fa-solid fa-eye"></i>
             </div>
-            <div class="checkbox">
-                <input type="checkbox" id="remember-me">
-                <label for="remember-me">
-                    <div class="outer-square">
-                        <div class="inner-square"></div>
-                    </div>
-                    <span>Remember me</span>
-                </label>
-            </div>
             <button class="button" input type="submit" value="Login">Continue</button>
             
         </div>
