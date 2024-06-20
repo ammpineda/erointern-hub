@@ -24,16 +24,7 @@ Route::get('/admin/dashboard', function () {
     return view('management/dashboard');
 })->name('admin-dashboard');
 
-Route::get('/admin/manage-interns', function () {
-    return view('management/manage-interns');
-})->name('manage-interns');
 
-Route::get('/admin/manage-dars', function () {
-    return view('management/manage-dars');
-})->name('manage-dars');
-Route::get('/admin/manage-announcements', function () {
-    return view('management/manage-announcements');
-})->name('manage-announcements');
 
 //route for login
 Route::post('/login', [LoginController::class, 'login'])->name('login');
