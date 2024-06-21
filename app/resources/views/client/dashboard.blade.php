@@ -7,12 +7,13 @@
 
     <!-- Custom CSS Link -->
     <link href="{{ asset('css/client/dashboard.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     @include('navbar')
     <!-- Section for displaying rendered hours -->
-    <a href="#" class="button">Clock In</a>
+    <a href="dar" class="button">Clock In</a>
     <div class="sections-container">
     <section id="rendered-hours">
         <h2>Rendered Hours</h2>
@@ -45,7 +46,7 @@
             </tbody>
         </table>
     </section>
-    </div>
+    
     <!-- Section for displaying all the daily accomplishment report forms in a table -->
     <section id="daily-reports">
         <h2>Daily Accomplishment Reports</h2>
@@ -102,6 +103,6 @@
             </tbody>
         </table>
     </section>
-
+    </div>
 </body>
 </html>

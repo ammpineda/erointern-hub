@@ -12,6 +12,7 @@
 .navbar {
     font-family: "Lato", sans-serif;
     font-size: 25px;
+    font-weight: bold;
     text-align: center;
     height: 80px;
     width: 100%; /* Full width */
@@ -30,7 +31,7 @@
 
         .logo {
             width: 150px; 
-            
+            margin-left: 10px;
         }
 
         .navbar-text {
@@ -39,6 +40,7 @@
             text-align: center; 
             flex: 1; 
             font-family: 'Lato', sans-serif; 
+            font-weight: bold;
         }
         .navbar-icons a {
             margin-left: 100px; 
@@ -46,6 +48,7 @@
         }
         .icon {
             width: 25px; 
+            margin-left: 15px;
         }
     </style>
 </head>
