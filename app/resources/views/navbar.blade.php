@@ -26,15 +26,22 @@
     padding: 0 20px; /* Add padding to align content */
     margin-top: -10px; /* Remove any top margin */
     margin-left: -32px; /* Remove left margin */
-    
+
 }
 
         .logo {
+            width: 150px;
+
             width: 150px; 
             margin-left: 10px;
         }
 
         .navbar-text {
+            font-size: 25px;
+            color: white;
+            text-align: center;
+            flex: 1;
+            font-family: 'Lato', sans-serif;
             font-size: 25px; 
             color: white; 
             text-align: center; 
@@ -43,11 +50,11 @@
             font-weight: bold;
         }
         .navbar-icons a {
-            margin-left: 100px; 
-            font-size: 24px; 
+            margin-left: 100px;
+            font-size: 24px;
         }
         .icon {
-            width: 25px; 
+            width: 25px;
             margin-left: 15px;
         }
     </style>
@@ -56,10 +63,13 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img src="{{ asset('images/loginimg.png') }}" alt="logo" class="logo">
         <span class="navbar-text">ERovoutika Electronics Robotics Automation - InternHub</span>
-        <a href=""><img src="{{ asset('images/icons8-settings-50.png') }}" class="icon"></a> 
+        <a href=""><img src="{{ asset('images/icons8-settings-50.png') }}" class="icon"></a>
         <a href=""><img src="{{ asset('images/icons8-bell-48.png')}}" class="icon"></a>
-        <a href=""><img src="{{ asset('images/icons8-user-50.png')}}" class="icon"></a>
-    </nav>
+        @if (Session::has('id'))
+        <a class="nav-link" href="{{ route('client-profile', Session::get('id')) }}">
+            <img src="{{ asset('images/icons8-user-50.png') }}" class="icon" alt="Profile">
+        </a>
+    @endif    </nav>
     <div class="container">
         @yield('content')
     </div>

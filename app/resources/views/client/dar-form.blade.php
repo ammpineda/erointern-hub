@@ -35,6 +35,24 @@
             document.querySelector(`.data-cell.${buttonType}`).textContent = timeString;
         }
 
+@if ($errors->any())
+    <div class="error-container">
+        <h4>dere issu a frikn problem</h4>
+        <p>{{ $errors->first() }}</p>
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="error-container">
+        <h4>dere issu a frikn problem</h4>
+        <p>{{ session('error') }}</p>
+    </div>
+@endif
+
+<h1 id="report-title">Daily Accomplishment Report</h1>
+
+<form action="{{ route('create-dar') }}" method="post" enctype="multipart/form-data">
+    @csrf <!-- CSRF Token for Laravel -->
         setInterval(updateClock, 1000);
     </script>
 </head>

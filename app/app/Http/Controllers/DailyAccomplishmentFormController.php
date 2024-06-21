@@ -31,9 +31,10 @@ class DailyAccomplishmentFormController extends Controller
                 'clock_out_image' => 'nullable|image|max:2048',
                 'attachment_file' => 'required|file|max:2048',
             ]);
-
+            //creates converts time from clock in input to format acceptable to db
             $clockIn = Carbon::createFromFormat('H:i', $validatedData['clock_in_at']);
             $clockOut = Carbon::createFromFormat('H:i', $validatedData['clock_out_at']);
+
             // Create a new DailyAccomplishment instance
 
             $dar = new DailyAccomplishment();
