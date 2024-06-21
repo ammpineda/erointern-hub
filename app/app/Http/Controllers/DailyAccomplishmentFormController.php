@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Session;
 
 class DailyAccomplishmentFormController extends Controller
 {
+    public function index()
+    {
+        // Fetch all daily accomplishments with the related user
+        $accomplishments = DailyAccomplishment::with('user')->get();
+
+        // Return the view with the accomplishments from the management directory
+        return view('management.manage-dars', compact('accomplishments'));
+    }
     public function submit(Request $request)
     {
         // Check if the user is logged in
@@ -59,5 +67,6 @@ class DailyAccomplishmentFormController extends Controller
             // User is not logged in, handle this scenario (e.g., redirect to login page)
             return redirect()->route('login.form')->withErrors(['error' => 'You must be logged in to submit a Daily Accomplishment Report.']);
         }
+
     }
 }
