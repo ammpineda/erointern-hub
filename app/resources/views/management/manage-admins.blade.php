@@ -10,7 +10,7 @@
 <link href="{{ asset('css/management/manage-interns.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <p>{{ $errors->first() }}</p>
-<div><form method="POST" action="{{ route('registerIntern') }}">
+<div><form method="POST" action="{{ route('registerAdmin') }}">
     @csrf
 
     <div>
@@ -45,14 +45,14 @@
         <i class="fas fa-eye toggle-icon" id="toggleConfirmPassword"></i>
     </div>
 
-    <button type="submit">Register Intern</button>
+    <button type="submit">Register Admin</button>
 </form></div>
 
 <table>
     <thead>
         <tr>
             <th>No</th>
-            <th>Intern Name</th>
+            <th>Admin Name</th>
             <th>Email</th>
             <th>Password</th>
             <th>Date Registered</th>
@@ -60,18 +60,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($interns as $intern)
+        @foreach ($admins as $admin)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $intern->last_name }}, {{ $intern->first_name }}, {{ $intern->middle_name }}</td>
-            <td>{{ $intern->email }}</td>
+            <td>{{ $admin->last_name }}, {{ $admin->first_name }}, {{ $admin->middle_name }}</td>
+            <td>{{ $admin->email }}</td>
             <td>
                 <span class="password-visibility-toggle">
-                    <span class="password-text" style="display: none;">{{ $intern->password }}</span>
+                    <span class="password-text" style="display: none;">{{ $admin->password }}</span>
                     <button class="btn btn-sm btn-secondary toggle-password-btn">Show</button>
                 </span>
             </td>
-            <td>{{ $intern->created_at }}</td>
+            <td>{{ $admin->created_at }}</td>
             <td>View/Edit/Delete</td>
         </tr>
     @endforeach
