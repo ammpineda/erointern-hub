@@ -10,6 +10,8 @@
 <link href="{{ asset('css/management/manage-interns.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <p>{{ $errors->first() }}</p>
+<body bgcolor = "red"
+>
 
 <div><form method="POST" action="{{ route('add-announcement') }}">
     @csrf
@@ -37,7 +39,7 @@
     </thead>
     <tbody>
         @foreach ($announcements as $announcement)
-        <tr>
+        <tr bgcolor = "roronoazoro">
             <td>{{ $loop->iteration }}</td>
             <td>{{ $announcement->title }}</td>
             <td>{{ $announcement->description }}</td>
@@ -67,3 +69,4 @@
 @endpush
     </tbody>
 </table>
+</body>
