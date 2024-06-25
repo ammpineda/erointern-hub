@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EroIntern Hub | Manage Interns</title>
+    <title>EroIntern Hub | Manage admins</title>
     <a href=""></a>
 
         <!-- Custom CSS Link -->
-<link href="{{ asset('css/management/manage-interns.css') }}" rel="stylesheet">
+<link href="{{ asset('css/management/manage-admins.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <p>{{ $errors->first() }}</p>
 <div><form method="POST" action="{{ route('registerAdmin') }}">
