@@ -86,24 +86,6 @@ body {
     box-sizing: border-box;
   }
   
-  /* Styles for the Rendered Hours section */
-  #rendered-hours {
-    background-color: #1e3a5f; /* Darker blue to blend with the page */
-    border-left: 5px solid #00bfa5; /* Teal for a subtle contrast */
-    padding: 15px;
-    border-radius: 5px;
-    margin-top: 30px;
-  }
-  
-  #rendered-hours h2 {
-    color: #00bfa5; /* Teal */
-    margin-bottom: 10px;
-  }
-  
-  #rendered-hours p {
-    font-size: 16px;
-    color: #ffffff; /* White for readability */
-  }
   
   /* Styles for the Schedule section */
   #schedule {
