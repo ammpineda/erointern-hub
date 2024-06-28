@@ -44,6 +44,7 @@ class DailyAccomplishmentFormController extends Controller
             $dar->user_id = Session::get('id'); // Associate the DAR with the logged-in user ID
             $dar->clock_in_at = $clockIn;  // Assuming $clockIn is a valid Carbon instance
             $dar->clock_out_at = $clockOut; // Assuming $clockOut is a valid Carbon instance
+            $dar->is_approved= 0;
             $dar->save();
 
             // Handle clock in and clock out images
