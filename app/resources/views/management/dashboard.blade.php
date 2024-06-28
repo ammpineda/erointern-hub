@@ -7,21 +7,24 @@
 
     <!-- Custom CSS Link -->
     <link href="{{ asset('css/management/dashboard.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     @include('navbar')
-    <!-- Section for displaying rendered hours -->
+<br>
     <section style="background-color: red">
 Welcome to the admin page <a href="/admin/manage-interns">manage interns here</a>
     </section>
-
+    <br>
+    <br>
     <!-- Section for displaying Erovoutika schedule -->
     <section id="schedule">
         <h2>Erovoutika Schedule</h2>
         <p>Office hours: 9:00 AM - 6:00 PM</p>
         <p>Break time: 12:00 PM - 1:00 PM</p>
     </section>
-
+<br>
+<br>
     <!-- Section for displaying list of announcements in a table -->
     <section id="announcements">
         <h2>Announcements</h2>
@@ -41,7 +44,8 @@ Welcome to the admin page <a href="/admin/manage-interns">manage interns here</a
             </tbody>
         </table>
     </section>
-
+    <br>
+    <br>
     <!-- Section for displaying all the daily accomplishment report forms in a table -->
     <section id="daily-reports">
         <h2>Daily Accomplishment Reports of interns</h2>

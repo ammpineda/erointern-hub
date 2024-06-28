@@ -79,6 +79,10 @@
     <hr class="section-divider">
     
     <div class="form-container">
+    <p class="form-instructions">
+        Please submit Clock-In & Clock-Out images and attachments for the Daily Activity Report via the below upload feature.
+    </p>
+    <br>
         <form>
             <div class="form-group">
                 <label for="clockin-image-upload">Clock In Image:</label>

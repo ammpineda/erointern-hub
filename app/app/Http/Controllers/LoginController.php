@@ -39,7 +39,5 @@ class LoginController extends Controller
             Session::put('is_admin', true);
             return redirect()->route('admin-dashboard')->with('success', 'You may now enroll or access your enrolled courses.');
         }
-
-
     }
 }

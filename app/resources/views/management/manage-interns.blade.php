@@ -10,131 +10,97 @@
 <link href="{{ asset('css/management/manage-interns.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <p>{{ $errors->first() }}</p>
-<div><form method="POST" action="{{ route('register') }}">
+<form method="POST" action="{{ route('register') }}">
     @csrf
 
-    <div>
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name" required>
-    </div>
-
-    <div>
-        <label for="middle_name">Middle Name:</label>
-        <input type="text" id="middle_name" name="middle_name">
-    </div>
-
-    <div>
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name" required>
-    </div>
-
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <i class="fas fa-eye toggle-icon" id="togglePassword"></i>
-    </div>
-
-    <div>
-        <label for="password_confirmation">Confirm Password:</label>
-        <input type="password" id="password_confirmation" name="password_confirmation" required>
-        <i class="fas fa-eye toggle-icon" id="toggleConfirmPassword"></i>
-    </div>
-
-    <button type="submit">Register Intern</button>
-</form></div>
-
-<table>
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Intern Name</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Date Registered</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($interns as $intern)
-        <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $intern->last_name }}, {{ $intern->first_name }}, {{ $intern->middle_name }}</td>
-            <td>{{ $intern->email }}</td>
-            <td>
-                <span class="password-visibility-toggle">
-                    <span class="password-text" style="display: none;">{{ $intern->password }}</span>
-                    <button class="btn btn-sm btn-secondary toggle-password-btn">Show</button>
-                </span>
-            </td>
-            <td>{{ $intern->created_at }}</td>
-            <td>View/Edit/Delete</td>
-        </tr>
-    @endforeach
-    @push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const togglePasswordBtns = document.querySelectorAll('.toggle-password-btn');
-            togglePasswordBtns.forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const passwordText = this.parentNode.querySelector('.password-text');
-                    if (passwordText.style.display === 'none') {
-                        passwordText.style.display = 'inline';
-                        this.textContent = 'Hide';
-                    } else {
-                        passwordText.style.display = 'none';
-                        this.textContent = 'Show';
-                    }
-                });
-            });
-        });
-    </script>
-@endpush
-    </tbody>
-</table>
-    <script>
-    const togglePassword = document.querySelector('#togglePassword');
-        const password = document.querySelector('#password');
+        function togglePasswordVisibility(id) {
+            const input = document.getElementById(id);
+            const icon = document.querySelector(`#${id} + .toggle-password`);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
 
-        togglePassword.addEventListener('click', function (e) {
-            // toggle the type attribute
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            // toggle the eye / eye slash icon
-            this.classList.toggle('fa-eye-slash');
-        });
+        function openPopup() {
+            document.getElementById('popup-form').style.display = 'block';
+        }
 
-        const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
-        const confirmPassword = document.querySelector('#password_confirmation');
-
-        toggleConfirmPassword.addEventListener('click', function (e) {
-            // toggle the type attribute
-            const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
-            confirmPassword.setAttribute('type', type);
-            // toggle the eye / eye slash icon
-            this.classList.toggle('fa-eye-slash');
-        });
-
-        const togglePasswordBtns = document.querySelectorAll('.toggle-password-btn');
-        togglePasswordBtns.forEach(btn => {
-            btn.addEventListener('click', function () {
-                const passwordText = this.parentNode.querySelector('.password-text');
-                const buttonText = this.textContent.trim();
-
-                if (buttonText === 'Show') {
-                    passwordText.textContent = passwordText.textContent.trim();
-                    passwordText.style.display = 'inline';
-                    this.textContent = 'Hide';
-                } else {
-                    passwordText.style.display = 'none';
-                    this.textContent = 'Show';
-                }
-            });
-        });
+        function closePopup() {
+            document.getElementById('popup-form').style.display = 'none';
+        }
     </script>
 </head>
+<body>
+@include('navbar')
+
+    <div class="content-container">
+        <button class="register-button" onclick="openPopup()">Register Intern</button>
+        <table class="intern-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Intern Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Date Registered</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example row -->
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>johndoe@example.com</td>
+                    <td>********</td>
+                    <td>01-01-2024</td>
+                    <td>
+                        <button class="action-button view-button">View</button>
+                        <button class="action-button edit-button">Edit</button>
+                        <button class="action-button delete-button">Delete</button>
+                    </td>
+                </tr>
+                <!-- More rows as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <div id="popup-form" class="popup-form">
+        <div class="popup-content">
+            <span class="close-button" onclick="closePopup()">&times;</span>
+            <h2>Register Intern</h2>
+            <form>
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name" required><br>
+
+                <label for="middle-name">Middle Name:</label>
+                <input type="text" id="middle-name" name="middle-name"><br>
+
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="last-name" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('password')"></i><br>
+
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('confirm-password')"></i><br>
+
+                <button type="submit" class="register-submit-button">Register</button>
+            </form>
+        </div>
+    </div>
+    </form>
+</body>
 </html>

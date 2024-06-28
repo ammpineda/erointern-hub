@@ -69,7 +69,8 @@
         <a class="nav-link" href="{{ route('client-profile', Session::get('id')) }}">
             <img src="{{ asset('images/icons8-user-50.png') }}" class="icon" alt="Profile">
         </a>
-    @endif    </nav>
+    @endif    
+</nav>
     <div class="container">
         @yield('content')
     </div>
