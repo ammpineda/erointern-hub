@@ -16,6 +16,8 @@
 Welcome to the admin page <a href="/admin/manage-interns">manage interns here</a>
 <a href="/admin/manage-admins">manage admins here</a>
 
+<a href="/admin/manage-admins">manage admins here</a>
+
     </section>
     <br>
     <br>
