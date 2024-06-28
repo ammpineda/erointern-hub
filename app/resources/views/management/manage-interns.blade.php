@@ -10,7 +10,7 @@
 <link href="{{ asset('css/management/manage-interns.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <p>{{ $errors->first() }}</p>
-<form method="POST" action="{{ route('register') }}">
+<div><form method="POST" action="{{ route('registerIntern') }}">
     @csrf
 
     <script>

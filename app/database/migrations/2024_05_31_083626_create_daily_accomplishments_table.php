@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('clock_in_image')->nullable();
             $table->string('clock_out_image')->nullable();
             $table->string('attachment_file')->nullable();
+            $table->boolean('is_approved')->nullable()->default(false);
             $table->timestamps();
         });
     }

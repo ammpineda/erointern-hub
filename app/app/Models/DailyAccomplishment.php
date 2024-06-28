@@ -18,6 +18,7 @@ class DailyAccomplishment extends Model
         'clock_in_image',
         'clock_out_image',
         'attachment_file',
+        'is_approved',
     ];
 
     public function user()

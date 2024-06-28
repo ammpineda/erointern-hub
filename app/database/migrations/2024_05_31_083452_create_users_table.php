@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('display_picture')->nullable();
+            $table->timestamp('last_login_at')->nullable();
             $table->timestamps();
         });
     }
