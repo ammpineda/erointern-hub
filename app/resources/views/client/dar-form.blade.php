@@ -25,11 +25,10 @@
 @endif
 
 <h1 id="report-title">Daily Accomplishment Report</h1>
-</script>
 
 <form action="{{ route('create-dar') }}" method="post" enctype="multipart/form-data">
-
     @csrf <!-- CSRF Token for Laravel -->
+    </script>
 
 <body onload="updateClock()">
 @include('navbar')
