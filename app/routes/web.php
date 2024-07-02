@@ -37,9 +37,13 @@ Route::post('/user/{id}/update', [ProfileController::class, 'update'])->name('us
 //route for login
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 //route for registering interns via admin
-Route::post('/register', [AdminController::class, 'register'])->name('register');
+Route::post('/register/intern', [AdminController::class, 'registerIntern'])->name('registerIntern');
+//route for registering admins via admin
+Route::post('/register/admin', [AdminController::class, 'registerAdmin'])->name('registerAdmin');
 //route for displaying interns in manage interns page
 Route::get('admin/manage-interns', [AdminController::class, 'manageInterns'])->name('display-interns');
+//route for displaying admins in manage admins page
+Route::get('admin/manage-admins', [AdminController::class, 'manageAdmins'])->name('display-admins');
 //route for creating new dars by the interns
 Route::post('/submit-daily-report', [DailyAccomplishmentFormController::class, 'submit'])->name('create-dar');
 //route for displaying dars for the admin page
