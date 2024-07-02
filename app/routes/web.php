@@ -21,9 +21,14 @@ Route::get('/dar', function () {
     return view('client/dar-form');
 });
 
+Route::get('/announcement', function () {
+    return view('client/announcement');
+});
+
 Route::get('/admin/dashboard', function () {
     return view('management/dashboard');
 })->name('admin-dashboard');
+
 
 Route::get('intern/{id}/profile',[ProfileController::class, 'edit'])->name('client-profile');
 Route::post('/user/{id}/update', [ProfileController::class, 'update'])->name('user.update');

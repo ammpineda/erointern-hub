@@ -1,0 +1,93 @@
+body {
+    background-color: #001f3f;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.navbar {
+    background-color: #001a33;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo {
+    height: 40px;
+}
+
+.header-title {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    flex: 1;
+}
+
+.icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icons i {
+    color: #fff;
+    font-size: 20px;
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.announcement {
+    background-color: #003366;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.announcement h2 {
+    margin-top: 0;
+}
+
+.announcement p {
+    margin: 5px 0;
+}
+
+.new-indicator {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 0 10px;
+    }
+
+    .announcement {
+        padding: 15px;
+    }
+}
