@@ -16,7 +16,7 @@ class AdminController extends Controller
             'middle_name' => 'nullable|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
-            'password' => 'required|string|confirmed',
+            'password' => 'required|string|confirmed|',
         ]);
 
         // Generate username
@@ -51,7 +51,7 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             // Rollback transaction
             DB::rollBack();
-            return redirect()->back()->withErrors(['error' => 'An error occurred while registering the intern. Please try again.']);
+            return redirect()->back();
         }
     }
     public function manageInterns()
