@@ -1,0 +1,256 @@
+body {
+    background-color: #001f3f;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.navbar {
+    background-color: #001a33;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo {
+    height: 40px;
+}
+
+.header-title {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    flex: 1;
+}
+
+.icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icons i {
+    color: #fff;
+    font-size: 20px;
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.manage-button {
+    background-color: #3E3EE0;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.manage-button:hover {
+    background-color: #2828DC;
+}
+
+.manage-button:active {
+    background-color: #1D1DB2;
+}
+
+.announcement-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.announcement-table th, .announcement-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.announcement-table th {
+    background-color: #001a33;
+    color: white;
+}
+
+.action-button {
+    background-color: #3E3EE0;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.view-button:hover {
+    background-color: #3498db;
+}
+
+.edit-button:hover {
+    background-color: #f39c12;
+}
+
+.delete-button:hover {
+    background-color: #e74c3c;
+}
+
+.popup-form {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    text-align: left;
+    color: #000;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form label {
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.create-button {
+    background-color: #3E3EE0;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.create-button:hover {
+    background-color: #2828DC;
+}
+
+.create-button:active {
+    background-color: #1D1DB2;
+}
+
+/* Media Queries for Responsive Design */
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .header-title {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .icons {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .content-container {
+        padding: 0 10px;
+    }
+
+    .manage-button {
+        float: none;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .announcement-table th, .announcement-table td {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .action-button {
+        padding: 3px 5px;
+        font-size: 12px;
+    }
+
+    .popup-content {
+        width: 95%;
+        margin: 20% auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 16px;
+    }
+
+    .icons i {
+        font-size: 18px;
+    }
+
+    .manage-button {
+        font-size: 14px;
+    }
+
+    .announcement-table th, .announcement-table td {
+        font-size: 12px;
+    }
+
+    .action-button {
+        padding: 2px 4px;
+        font-size: 10px;
+    }
+}
