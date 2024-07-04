@@ -17,20 +17,12 @@
         }
     </script>
 </head>
+@include('navbar')
 
 <body>
-    <nav class="navbar">
-        <img src="logo.png" alt="Logo" class="logo">
-        <div class="header-title">ERovoutika Electronics Robotics Automation - InternHub</div>
-        <div class="icons">
-            <i class="fa-solid fa-gear"></i>
-            <i class="fa-regular fa-bell"></i>
-            <i class="fa-solid fa-user"></i>
-        </div>
-    </nav>
+
 
     <div class="content-container">
-        <button class="manage-button" onclick="openPopup()">Manage Announcements</button>
         <table class="announcement-table">
             <thead>
                 <tr>
