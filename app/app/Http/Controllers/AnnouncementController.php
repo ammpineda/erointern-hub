@@ -16,7 +16,17 @@ public function displayAnnouncements()
 
     // Pass the announcements data to the view
     return view('management.manage-announcements', compact('announcements'));
-}
+
+   ;}
+   public function interndisplayAnnouncements()
+{
+    // Retrieve all announcements with the associated user, ordered by creation date
+    $announcements = Announcement::with('user')->orderBy('created_at', 'desc')->get();
+
+    // Pass the announcements data to the view
+    return view('client.announcements', compact('announcements'));
+
+   ;}
 
 public function addAnnouncement(Request $request)
     {

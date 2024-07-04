@@ -32,7 +32,7 @@
         .logo {
             width: 150px;
 
-            width: 150px; 
+            width: 150px;
             margin-left: 10px;
         }
 
@@ -42,11 +42,11 @@
             text-align: center;
             flex: 1;
             font-family: 'Lato', sans-serif;
-            font-size: 25px; 
-            color: white; 
-            text-align: center; 
-            flex: 1; 
-            font-family: 'Lato', sans-serif; 
+            font-size: 25px;
+            color: white;
+            text-align: center;
+            flex: 1;
+            font-family: 'Lato', sans-serif;
             font-weight: bold;
         }
         .navbar-icons a {
@@ -69,7 +69,7 @@
         <a class="nav-link" href="{{ route('client-profile', Session::get('id')) }}">
             <img src="{{ asset('images/icons8-user-50.png') }}" class="icon" alt="Profile">
         </a>
-    @endif    
+    @endif
 </nav>
     <div class="container">
         @yield('content')

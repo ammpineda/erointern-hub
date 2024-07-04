@@ -9,9 +9,6 @@
         <!-- Custom CSS Link -->
 <link href="{{ asset('css/management/manage-interns.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<p>{{ $errors->first() }}</p>
-<div><form method="POST" action="{{ route('registerIntern') }}">
-    @csrf
 
     <script>
         function togglePasswordVisibility(id) {
@@ -39,7 +36,7 @@
 </head>
 <body>
 @include('navbar')
-
+@include('error')
     <div class="content-container">
         <button class="register-button" onclick="openPopup()">Register Intern</button>
         <table class="intern-table">
@@ -54,20 +51,48 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Example row -->
+                @foreach ($interns as $intern)
                 <tr>
-                    <td>1</td>
-                    <td>John Doe</td>
-                    <td>johndoe@example.com</td>
-                    <td>********</td>
-                    <td>01-01-2024</td>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $intern->last_name }}, {{ $intern->first_name }}, {{ $intern->middle_name }}</td>
+                    <td>{{ $intern->email }}</td>
                     <td>
-                        <button class="action-button view-button">View</button>
-                        <button class="action-button edit-button">Edit</button>
-                        <button class="action-button delete-button">Delete</button>
+                        <span class="password-visibility-toggle">
+                            <span class="password-text" style="display: none;">{{ $intern->password }}</span>
+                            <button class="btn btn-sm btn-secondary toggle-password-btn">Show</button>
+                        </span>
                     </td>
+                    <td>{{ $intern->created_at }}</td>
+                    <td>View/Edit/Delete</td>
+
                 </tr>
-                <!-- More rows as needed -->
+                @endforeach
+    @push('scripts')
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye / eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+        const confirmPassword = document.querySelector('#password_confirmation');
+
+        toggleConfirmPassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmPassword.setAttribute('type', type);
+            // toggle the eye / eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+@endpush
+
             </tbody>
         </table>
     </div>
@@ -76,31 +101,51 @@
         <div class="popup-content">
             <span class="close-button" onclick="closePopup()">&times;</span>
             <h2>Register Intern</h2>
-            <form>
-                <label for="first-name">First Name:</label>
-                <input type="text" id="first-name" name="first-name" required><br>
+            <form action="{{ route('registerIntern') }}" method="post">
+                @csrf
+                <label for="first_name">First Name:</label>
+                <input type="text" id="first_name" name="first_name" required><br>
 
                 <label for="middle-name">Middle Name:</label>
-                <input type="text" id="middle-name" name="middle-name"><br>
+                <input type="text" id="middle_name" name="middle_name"><br>
 
-                <label for="last-name">Last Name:</label>
-                <input type="text" id="last-name" name="last-name" required><br>
+                <label for="last_name">Last Name:</label>
+                <input type="text" id="last_name" name="last_name" required><br>
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required><br>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('password')"></i><br>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
 
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
-                <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('confirm-password')"></i><br>
+                <div>
+                    <label for="password_confirmation">Confirm Password:</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation" required>
+                </div>
 
                 <button type="submit" class="register-submit-button">Register</button>
-            </form>
         </div>
     </div>
     </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const togglePasswordBtns = document.querySelectorAll('.toggle-password-btn');
+            togglePasswordBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const passwordText = this.parentNode.querySelector('.password-text');
+                    if (passwordText.style.display === 'none') {
+                        passwordText.style.display = 'inline';
+                        this.textContent = 'Hide';
+                    } else {
+                        passwordText.style.display = 'none';
+                        this.textContent = 'Show';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -17,6 +17,7 @@ class DailyAccomplishmentFormController extends Controller
         // Return the view with the accomplishments from the management directory
         return view('management.manage-dars', compact('accomplishments'));
     }
+
     public function submit(Request $request)
     {
         // Check if the user is logged in
