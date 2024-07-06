@@ -45,8 +45,8 @@
                 <!-- More rows as needed -->
             </tbody>
         </table>
+        <a href="intern/announcements" class="button">all announcements</a>
     </section>
-    
     <!-- Section for displaying all the daily accomplishment report forms in a table -->
     <section id="daily-reports">
         <h2>Daily Accomplishment Reports</h2>
@@ -102,7 +102,8 @@
                 <!-- More rows as needed -->
             </tbody>
         </table>
-    </section>
+        <a href="{{ route('ShowUserDars', ['id' => $userId]) }}" class="button">all DARs</a>
+                </section>
     </div>
 </body>
 </html>

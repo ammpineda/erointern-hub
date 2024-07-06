@@ -1,4 +1,6 @@
 <?php
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DailyAccomplishmentFormController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
@@ -14,9 +16,7 @@ Route::get('/', function () {
     return view('login');
 })->name('login.form');
 
-Route::get('/dashboard', function () {
-    return view('client/dashboard');
-})->name('intern-dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('intern-dashboard');
 
 Route::get('/dar', function () {
     return view('client/dar-form');
