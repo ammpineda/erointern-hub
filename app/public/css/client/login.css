@@ -1,6 +1,6 @@
 body {
     background-image: url('/images/dbbg.png');
-    background-size: 10000px;
+    background-size: cover;
     background-repeat: no-repeat;
     color: #fff;
     font-family: 'Lato', sans-serif;
@@ -9,7 +9,6 @@ body {
     position: relative;
     min-height: 100vh; /* Ensures body takes full viewport height */
     overflow-x: hidden; /* Prevents horizontal scrolling */
-    overflow-y: hidden; /* Prevents vertical scrolling */
 }
 
 .navbar {
@@ -178,4 +177,149 @@ body {
 
 .button:disabled {
     opacity: 0.4;
+}
+
+/* Media Queries for Responsiveness */
+
+/* General Breakpoints */
+@media (max-width: 1024px) { /* Tablets, small laptops */
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .icons {
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .middle-image {
+        margin: 60px auto 20px;
+    }
+
+    .container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .textbox input {
+        height: 40px;
+    }
+
+    .button {
+        height: 40px;
+    }
+}
+
+@media (max-width: 768px) { /* Tablets, small laptops */
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .icons {
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .middle-image {
+        margin: 60px auto 20px;
+    }
+
+    .container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .textbox input {
+        height: 40px;
+    }
+
+    .button {
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) { /* Most mobile devices */
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .icons {
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .middle-image {
+        margin: 50px auto 20px;
+    }
+
+    .container {
+        width: 100%;
+        margin: 15px auto;
+        padding: 10px;
+    }
+
+    .textbox input {
+        height: 36px;
+    }
+
+    .button {
+        height: 36px;
+    }
+}
+
+/* Specific Device Breakpoints */
+@media (max-width: 1366px) and (min-width: 1280px) { /* Common desktop/laptop screen */
+    .container {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 414px) { /* iPhone 6/7/8 Plus, XR, 11, 11 Pro, 11 Pro Max */
+    .container {
+        padding: 10px;
+    }
+
+    .textbox input {
+        height: 34px;
+    }
+
+    .button {
+        height: 34px;
+    }
+}
+
+@media (max-width: 375px) { /* iPhone 6/7/8, X, XS, 12 mini, 13 mini, SE */
+    .container {
+        padding: 8px;
+    }
+
+    .textbox input {
+        height: 32px;
+    }
+
+    .button {
+        height: 32px;
+    }
+}
+
+@media (max-width: 320px) { /* iPhone 5/5S/5C, SE (1st generation) */
+    .container {
+        padding: 5px;
+    }
+
+    .textbox input {
+        height: 30px;
+    }
+
+    .button {
+        height: 30px;
+    }
 }
