@@ -1,7 +1,7 @@
 body {
     font-family: 'Lato', sans-serif;
     background-image: url('/images/dbbg.png');
-    background-size: 10000px;
+    background-size: cover;
     background-repeat: no-repeat;
     font-family: 'Poppins', sans-serif;
     display: flex;
@@ -10,6 +10,7 @@ body {
     height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
+    padding: 20px;
 }
 
 .clock-container {
@@ -55,6 +56,7 @@ body {
     align-items: center;
     width: 100%;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .data-cell {
@@ -227,4 +229,67 @@ textarea {
 
 .cancel-button:active {
     background-color: #444;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 1200px) {
+    .clock {
+        font-size: 40px;
+    }
+
+    .action-button {
+        font-size: 18px;
+        padding: 12px 24px;
+    }
+
+    .status {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .clock {
+        font-size: 36px;
+    }
+
+    .data-cell {
+        width: 45%;
+        max-width: none;
+    }
+
+    .action-button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .status {
+        font-size: 14px;
+    }
+
+    .form-instructions {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .clock {
+        font-size: 28px;
+    }
+
+    .data-cell {
+        width: 100%;
+    }
+
+    .action-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .status {
+        font-size: 12px;
+    }
+
+    .form-instructions {
+        font-size: 12px;
+    }
 }

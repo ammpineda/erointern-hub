@@ -76,7 +76,7 @@
             <label for="description">Description:</label>
             <textarea id="description" rows="4" cols="50" placeholder="Enter description here..."></textarea><br><br>
             <div class="form-buttons">
-                <button type="button" onclick="cancelForm()"class="cancel-button">Cancel</button>
+            <a href="dashboard" class="button">Go Back</a>
                 <button type="submit" class="submit-button">Submit</button>
             </div>
         </form>
