@@ -32,7 +32,7 @@
         .logo {
             width: 150px;
 
-            width: 150px; 
+            width: 150px;
             margin-left: 10px;
         }
 
@@ -42,11 +42,11 @@
             text-align: center;
             flex: 1;
             font-family: 'Lato', sans-serif;
-            font-size: 25px; 
-            color: white; 
-            text-align: center; 
-            flex: 1; 
-            font-family: 'Lato', sans-serif; 
+            font-size: 25px;
+            color: white;
+            text-align: center;
+            flex: 1;
+            font-family: 'Lato', sans-serif;
             font-weight: bold;
         }
         .navbar-icons a {
@@ -63,13 +63,13 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img src="{{ asset('images/loginimg.png') }}" alt="logo" class="logo">
         <span class="navbar-text">ERovoutika Electronics Robotics Automation - InternHub</span>
-        <a href=""><img src="{{ asset('images/icons8-settings-50.png') }}" class="icon"></a>
+        <a href="intern/{id}/profile"><img src="{{ asset('images/icons8-settings-50.png') }}" class="icon"></a>
         <a href=""><img src="{{ asset('images/icons8-bell-48.png')}}" class="icon"></a>
         @if (Session::has('id'))
         <a class="nav-link" href="{{ route('client-profile', Session::get('id')) }}">
             <img src="{{ asset('images/icons8-user-50.png') }}" class="icon" alt="Profile">
         </a>
-    @endif    
+    @endif
 </nav>
     <div class="container">
         @yield('content')
