@@ -34,7 +34,9 @@
                 <div class="text login">Log in to your account</div>
                 <div class="textbox">
 
+
                     <i class="fa-regular  fa-user"></i>
+
 
 
 
