@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('display_picture')->nullable();
             $table->timestamp('last_login_at')->nullable();
+            $table->boolean('is_active')->nullable()->default(true);
+            $table->boolean('is_archived')->nullable()->default(false);
             $table->timestamps();
         });
     }

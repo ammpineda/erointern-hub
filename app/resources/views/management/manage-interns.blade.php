@@ -37,37 +37,80 @@
 <body>
 @include('navbar')
 @include('error')
-    <div class="content-container">
-        <button class="register-button" onclick="openPopup()">Register Intern</button>
-        <table class="intern-table">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Intern Name</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Date Registered</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($interns as $intern)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $intern->last_name }}, {{ $intern->first_name }}, {{ $intern->middle_name }}</td>
-                    <td>{{ $intern->email }}</td>
-                    <td>
-                        <span class="password-visibility-toggle">
-                            <span class="password-text" style="display: none;">{{ $intern->password }}</span>
-                            <button class="btn btn-sm btn-secondary toggle-password-btn">Show</button>
-                        </span>
-                    </td>
-                    <td>{{ $intern->created_at }}</td>
-                    <td>View/Edit/Delete</td>
+<div class="content-container">
+    <div class="search-container">
+        <select id="search-type" class="form-control">
+            <option value="name">Intern Name</option>
+            <option value="email">Email</option>
+        </select>
+        <input type="text" id="search-input" class="form-control" placeholder="Search..." />
+    </div>
+    <button class="register-button" onclick="openPopup()">Register Intern</button>
+    <table class="intern-table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Intern Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Date Registered</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            @foreach ($interns as $intern)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $intern->last_name }}, {{ $intern->first_name }}, {{ $intern->middle_name }}</td>
+                <td>{{ $intern->email }}</td>
+                <td>
+                    <span class="password-visibility-toggle">
+                        <span class="password-text" style="display: none;">{{ $intern->password }}</span>
+                        <button class="btn btn-sm btn-secondary toggle-password-btn">Show</button>
+                    </span>
+                </td>
+                <td>{{ $intern->created_at }}</td>
+                <td>View/Edit/Archive</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
-                </tr>
-                @endforeach
-    @push('scripts')
+<script>
+    // Get the search input and search type select elements
+    const searchInput = document.getElementById('search-input');
+    const searchType = document.getElementById('search-type');
+
+    // Add an event listener to the search input
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const selectedSearchType = searchType.value;
+
+        // Get all the table rows
+        const tableRows = document.querySelectorAll('#table-body tr');
+
+        // Loop through the table rows and show/hide based on the search
+        tableRows.forEach(function(row) {
+            const cells = row.querySelectorAll('td');
+            let isMatch = false;
+
+            if (selectedSearchType === 'name') {
+                const nameText = cells[1].textContent.toLowerCase();
+                isMatch = nameText.includes(searchTerm);
+            } else if (selectedSearchType === 'email') {
+                const emailText = cells[2].textContent.toLowerCase();
+                isMatch = emailText.includes(searchTerm);
+            } else {
+                const nameText = cells[1].textContent.toLowerCase();
+                const emailText = cells[2].textContent.toLowerCase();
+                isMatch = nameText.includes(searchTerm) || emailText.includes(searchTerm);
+            }
+
+            row.style.display = isMatch ? 'table-row' : 'none';
+        });
+    });
+</script>
     <script>
         const togglePassword = document.querySelector('#togglePassword');
         const password = document.querySelector('#password');
@@ -91,12 +134,6 @@
             this.classList.toggle('fa-eye-slash');
         });
     </script>
-@endpush
-
-            </tbody>
-        </table>
-    </div>
-
     <div id="popup-form" class="popup-form">
         <div class="popup-content">
             <span class="close-button" onclick="closePopup()">&times;</span>
