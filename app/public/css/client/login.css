@@ -97,7 +97,7 @@ body {
     color: #A0AEC0;
 }
 
-.textbox i.fa-envelope {
+.textbox i.fa-user {
     left: 10px; /* Positioning the envelope icon */
 }
 
@@ -147,7 +147,7 @@ body {
 }
 
 .checkbox input:checked + label .inner-square {
-    display: block; 
+    display: block;
 }
 
 .button {

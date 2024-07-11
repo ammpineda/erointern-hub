@@ -16,7 +16,7 @@ class AdminController extends Controller
             'middle_name' => 'nullable|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
-            'password' => 'required|string|confirmed|',
+            'password' => 'required|string|confirmed|min:8',
         ]);
 
         // Generate username
