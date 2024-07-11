@@ -34,7 +34,7 @@
                 <div class="text login">Log in to your account</div>
                 <div class="textbox">
                     <i class="fa-regular fa-envelope"></i>
-                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="username" name="username" placeholder="Username" required>
                 </div>
                 <div class="textbox">
                     <i class="fa-solid fa-lock"></i>

@@ -12,15 +12,15 @@ class LoginController extends Controller
 {
     public function login(Request $request){
         $request->validate([
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
         // checks email
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('username', $request->username)->first();
 
         if (!$user) {
-            return redirect()->back()->withErrors(['error' => 'No user found with this email address.']);
+            return redirect()->back()->withErrors(['error' => 'No user found with this username.']);
         }
 
         // change to password_verify later
