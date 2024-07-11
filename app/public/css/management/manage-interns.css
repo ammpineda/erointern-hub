@@ -18,6 +18,18 @@ body {
     margin: 20px auto;
     padding: 0 20px;
 }
+.search-container {
+    justify-content: space-between;
+    align-items: left;
+    margin-bottom: 20px;
+  }
+
+  .search-container .form-control {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 
 .register-button {
     background-color: #3E3EE0;
