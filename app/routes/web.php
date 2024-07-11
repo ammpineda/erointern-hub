@@ -30,7 +30,7 @@ Route::get('/admin/dashboard', function () {
     return view('management/dashboard');
 })->name('admin-dashboard');
 
-Route::get('intern/announcements', [AnnouncementController::class, 'interndisplayAnnouncements'])->name('intern-display-announcements');
+Route::get('/announcements', [AnnouncementController::class, 'displayAnnouncements'])->name('display-announcements');
 
 Route::get('intern/{id}/dars', [UserDARController::class, 'userDars'])->name('ShowUserDars');
 

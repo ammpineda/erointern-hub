@@ -45,7 +45,7 @@
                 <!-- More rows as needed -->
             </tbody>
         </table>
-        <a href="intern/announcements" class="button">all announcements</a>
+        <a href="/announcements" class="button">all announcements</a>
     </section>
     <!-- Section for displaying all the daily accomplishment report forms in a table -->
     <section id="daily-reports">

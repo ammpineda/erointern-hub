@@ -55,16 +55,9 @@
         Please submit the link to Clock-In & Clock-Out images and attachment for the Daily Activity Report.
     </p>
     <br>
+
             <div class="form-group">
-                <label for="clockin-image-upload">Clock In Image:</label>
-                <input type="text" id="clockin-image-upload" name="clock_in_image">
-            </div>
-            <div class="form-group">
-                <label for="clockout-image-upload">Clock Out Image:</label>
-                <input type="text" id="clockout-image-upload" name="clock_out_image">
-            </div>
-            <div class="form-group">
-                <label for="attachment_file">Daily Accomplishment Report:</label>
+                <label for="attachment_file">Link to attachments</label>
                 <input type="text" id="attachment_file" name="attachment_file">
             </div>
             <label for="description">Description:</label>

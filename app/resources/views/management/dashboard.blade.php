@@ -47,6 +47,7 @@ Welcome to the admin page <a href="/admin/manage-interns">manage interns here</a
                 <!-- More rows as needed -->
             </tbody>
         </table>
+        <a href="/announcements" class="button">all announcements</a>
     </section>
     <br>
     <br>
