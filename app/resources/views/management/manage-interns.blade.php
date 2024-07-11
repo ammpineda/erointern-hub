@@ -40,12 +40,13 @@
 <div class="content-container">
     <div class="search-container">
         <select id="search-type" class="form-control">
-            <option value="name">Intern Name</option>
-            <option value="email">Email</option>
+            <option value="name">By Name</option>
+            <option value="email">By Email</option>
         </select>
         <input type="text" id="search-input" class="form-control" placeholder="Search..." />
+        <button class="register-button" onclick="openPopup()">Register Intern</button>
+
     </div>
-    <button class="register-button" onclick="openPopup()">Register Intern</button>
     <table class="intern-table">
         <thead>
             <tr>
