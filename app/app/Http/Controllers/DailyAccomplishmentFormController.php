@@ -28,9 +28,9 @@ class DailyAccomplishmentFormController extends Controller
                 'description' => 'nullable|string',
                 'clock_in_at' => 'required|date_format:H:i',
                 'clock_out_at' => 'required|date_format:H:i',
-                'clock_in_image' => 'nullable|image|max:2048',
-                'clock_out_image' => 'nullable|image|max:2048',
-                'attachment_file' => 'required|file|max:2048',
+                'clock_in_image' => 'nullable|string|max:2048',
+                'clock_out_image' => 'nullable|string|max:2048',
+                'attachment_file' => '|string|max:2048',
             ]);
             //creates converts time from clock in input to format acceptable to db
             $clockIn = Carbon::createFromFormat('H:i', $validatedData['clock_in_at']);
@@ -41,28 +41,16 @@ class DailyAccomplishmentFormController extends Controller
             $dar = new DailyAccomplishment();
             $dar->title = $validatedData['title'];
             $dar->description = $validatedData['description'];
-
+            $dar->clock_in_image = $validatedData['clock_in_image'];
+            $dar->clock_out_image = $validatedData['clock_out_image'];
+            $dar->attachment_file = $validatedData['attachment_file'];
             $dar->user_id = Session::get('id'); // Associate the DAR with the logged-in user ID
             $dar->clock_in_at = $clockIn;  // Assuming $clockIn is a valid Carbon instance
             $dar->clock_out_at = $clockOut; // Assuming $clockOut is a valid Carbon instance
             $dar->is_approved= 0;
             $dar->save();
 
-            // Handle clock in and clock out images
-            if ($request->hasFile('clock_in_image')) {
-                $dar->clock_in_image = $request->file('clock_in_image')->store('clock_in_images');
-                $dar->save();
-            }
-            if ($request->hasFile('clock_out_image')) {
-                $dar->clock_out_image = $request->file('clock_out_image')->store('clock_out_images');
-                $dar->save();
-            }
 
-            // Handle attachment file
-            if ($request->hasFile('attachment_file')) {
-                $dar->attachment_file = $request->file('attachment_file')->store('attachment_file');
-                $dar->save();
-            }
 
             // Redirect back with success message
             return redirect()->back()->with('success', 'Daily Accomplishment Report submitted successfully!');

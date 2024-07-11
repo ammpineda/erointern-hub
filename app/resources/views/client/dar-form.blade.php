@@ -7,19 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="{{ asset('css/client/dar-form.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5e71518412.js" crossorigin="anonymous"></script>
-    <script>
 </head>
-
+<body>
+@include('navbar')
 @if ($errors->any())
     <div class="error-container">
-        <h4>dere issu a frikn problem</h4>
+        <h4>There is an issue</h4>
         <p>{{ $errors->first() }}</p>
     </div>
 @endif
 
 @if (session('error'))
     <div class="error-container">
-        <h4>dere issu a frikn problem</h4>
+        <h4>There is an issue</h4>
         <p>{{ session('error') }}</p>
     </div>
 @endif
@@ -28,10 +28,8 @@
 
 <form action="{{ route('create-dar') }}" method="post" enctype="multipart/form-data">
     @csrf <!-- CSRF Token for Laravel -->
-    </script>
 
-<body onload="updateClock()">
-@include('navbar')
+
     <div class="clock-container">
         <div id="clock" class="clock"></div>
     </div>
@@ -53,28 +51,24 @@
     </div>
     <hr class="section-divider">
 
-    <div class="form-container">
     <p class="form-instructions">
-        Please submit Clock-In & Clock-Out images and attachments for the Daily Activity Report via the below upload feature.
+        Please submit the link to Clock-In & Clock-Out images and attachment for the Daily Activity Report.
     </p>
     <br>
             <div class="form-group">
                 <label for="clockin-image-upload">Clock In Image:</label>
-                <label for="clockin-image-upload" class="custom-file-upload">Upload file</label>
-                <input type="file" id="clockin-image-upload" accept="image/*">
+                <input type="text" id="clockin-image-upload" name="clock_in_image">
             </div>
             <div class="form-group">
                 <label for="clockout-image-upload">Clock Out Image:</label>
-                <label for="clockout-image-upload" class="custom-file-upload">Upload file</label>
-                <input type="file" id="clockout-image-upload" accept="image/*">
+                <input type="text" id="clockout-image-upload" name="clock_out_image">
             </div>
             <div class="form-group">
-                <label for="pdf-upload">Daily Accomplishment Report:</label>
-                <label for="pdf-upload" class="custom-file-upload">Upload file</label>
-                <input type="file" id="pdf-upload" accept="application/pdf">
+                <label for="attachment_file">Daily Accomplishment Report:</label>
+                <input type="text" id="attachment_file" name="attachment_file">
             </div>
             <label for="description">Description:</label>
-            <textarea id="description" rows="4" cols="50" placeholder="Enter description here..."></textarea><br><br>
+            <textarea id="description" rows="4" cols="50" placeholder="Enter description here..." name="description"></textarea><br><br>
             <div class="form-buttons">
             <a href="dashboard" class="button">Go Back</a>
                 <button type="submit" class="submit-button">Submit</button>
