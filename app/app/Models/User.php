@@ -19,6 +19,8 @@ class User extends Model
         'password',
         'display_picture',
         'last_login_at',
+        'is_active',
+        'is_archived',
     ];
 
     public function jobDetails()

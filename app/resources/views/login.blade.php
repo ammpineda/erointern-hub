@@ -15,7 +15,7 @@
 
 <body>
     <nav class="navbar">
-        <img src="{{ asset('images/login-logo.png') }}" alt="logo" class="logo">
+        <img src="{{ asset('images/loginlogo.png') }}" alt="logo" class="logo">
         <div class="icons">
             <i class="fa-solid fa-globe"></i>
             <i class="fa-regular fa-circle-question"></i>
@@ -33,7 +33,13 @@
                 <div class="text welcome">Welcome to InternHub!</div>
                 <div class="text login">Log in to your account</div>
                 <div class="textbox">
-                    <i class="fa-regular fa-envelope"></i>
+
+
+                    <i class="fa-regular  fa-user"></i>
+
+
+
+
                     <input type="username" name="username" placeholder="Username" required>
                 </div>
                 <div class="textbox">
