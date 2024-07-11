@@ -33,7 +33,11 @@
                 <div class="text welcome">Welcome to InternHub!</div>
                 <div class="text login">Log in to your account</div>
                 <div class="textbox">
+
                     <i class="fa-regular  fa-user"></i>
+
+
+
                     <input type="username" name="username" placeholder="Username" required>
                 </div>
                 <div class="textbox">
