@@ -120,7 +120,7 @@
             float: right;
             margin-bottom: 10px;
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #2828DCFF;
             color: #fff;
             border: none;
             cursor: pointer;
@@ -139,6 +139,15 @@
             padding: 7px 5px;
             width: 100%
         }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 
@@ -147,8 +156,44 @@
     @include('navbar')
     @include('error')
 
-    <!-- Button to open the modal -->
-    <button id="openModalBtn" class="create-btn">Create Announcement</button>
+    <div class="content-container">
+
+        <!-- Button to open the modal -->
+        <button id="openModalBtn" class="create-btn">Create Announcement</button>
+<br>
+<br>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Created At</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($announcements as $announcement)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $announcement->title }}</td>
+                    <td>{{ $announcement->description }}</td>
+                    <td>{{ $announcement->created_at }}</td>
+                    <td>
+                        <form action="{{ route('delete-announcement', $announcement->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="deletebutton">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+    </div>
 
     <!-- The Modal -->
     <div id="announcementModal" class="modal">
@@ -166,41 +211,10 @@
                     <label for="description">Description:</label>
                     <textarea id="description" name="description" required></textarea>
                 </div>
-                <button type="submit"
-                    style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; cursor: pointer;">Create</button>
+                <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; cursor: pointer;">Create</button>
             </form>
         </div>
     </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Created At</th>
-                <th>ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($announcements as $announcement)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $announcement->title }}</td>
-                    <td>{{ $announcement->description }}</td>
-                    <td>{{ $announcement->created_at }}</td>
-                    <td>
-                        <form action="{{ route('delete-announcement', $announcement->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="deletebutton">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-
     <!-- JavaScript to handle modal toggle -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
