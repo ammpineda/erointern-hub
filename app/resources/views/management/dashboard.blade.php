@@ -31,6 +31,7 @@
 
         .announcement h3 {
             margin-top: 0;
+            color:black;
         }
 
         .announcement p {
@@ -84,7 +85,6 @@
             font-weight: bold;
         }
 
-
         /* View all button style */
         .view-all-btn {
             display: inline-block;
@@ -98,10 +98,30 @@
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px; /* Adjust spacing */
+            margin-right: 10px; /* Adjust spacing */
         }
 
         .view-all-btn:hover {
             background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Button styles for manage links */
+        .manage-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745; /* Green background */
+            color: #ffffff; /* White text */
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px; /* Adjust spacing */
+        }
+
+        .manage-btn:hover {
+            background-color: #218838; /* Darker green on hover */
         }
     </style>
 </head>
@@ -109,9 +129,10 @@
     @include('navbar')
     <br>
     <section>
-        <p>Welcome to the admin page <a href="/admin/manage-interns">manage interns here</a>
-            <a href="/admin/manage-admins">manage admins here</a>
-            <a href="/admin/manage-announcements">manage announcements here</a>
+        <p>
+            <a href="/admin/manage-interns" class="manage-btn">Manage Interns</a>
+            <a href="/admin/manage-admins" class="manage-btn">Manage Admins</a>
+            <a href="/admin/manage-announcements" class="manage-btn">Manage Announcements</a>
         </p>
     </section>
     <br>
