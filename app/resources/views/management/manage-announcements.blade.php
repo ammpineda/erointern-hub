@@ -179,7 +179,7 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Created At</th>
-                <th></th>
+                <th>ACTION</th>
             </tr>
         </thead>
         <tbody>
