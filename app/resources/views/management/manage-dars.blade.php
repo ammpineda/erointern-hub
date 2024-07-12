@@ -41,6 +41,15 @@
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+        .viewbutton {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+            border: none;
+            padding: 7px 5px;
+            width: 100%
+        }
     </style>
 </head>
 
@@ -70,7 +79,12 @@
                     <td>{{ $accomplishment->description }}</td>
                     <td>{{ $accomplishment->clock_in_at }}</td>
                     <td>{{ $accomplishment->clock_out_at }}</td>
-                    <td>View</td>
+                    <td> <form  method="POST">
+                        @csrf
+                        @method('VIEW')
+                        <button type="submit" class="viewbutton">View</button>
+                    </form>
+                </td>
 
                     @endforeach
             </tbody>
