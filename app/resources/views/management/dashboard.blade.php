@@ -174,6 +174,7 @@
                     <td>9:00 AM</td>
                     <td>1:00 PM</td>
                     <td>4</td>
+                    <td><a href="#">VIEW</a></td>
                 </tr>
             </tbody>
         </table>
