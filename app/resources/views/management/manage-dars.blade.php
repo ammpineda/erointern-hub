@@ -60,10 +60,10 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>User</th>
-                    <th>Title</th>
-                    <th>Description</th>
+                    <th style="width: 50px;">ID</th>
+                    <th style="width: 250px;">User</th>
+                    <th style="width: 300px;">Title</th>
+                    <th>Date Submitted</th>
                     <th>Clock In At</th>
                     <th>Clock Out At</th>
                     <th>Action</th>
@@ -75,14 +75,15 @@
                 <tr>
                     <td>{{ $accomplishment->id }}</td>
                     <td>{{ $accomplishment->user->first_name }} {{ $accomplishment->user->last_name }}</td>
+                    
                     <td>{{ $accomplishment->title }}</td>
-                    <td>{{ $accomplishment->description }}</td>
+                    <td> {{ $accomplishment->created_at }} </td>
                     <td>{{ $accomplishment->clock_in_at }}</td>
                     <td>{{ $accomplishment->clock_out_at }}</td>
                     <td> <form  method="POST">
                         @csrf
                         @method('VIEW')
-                        <button type="submit" class="viewbutton">View</button>
+                        <button type="submit" class="viewbutton">VIEW DETAILS</button>
                     </form>
                 </td>
 
