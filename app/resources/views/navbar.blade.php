@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/client/dashboard.css') }}" rel="stylesheet">
+   
 
     <style>
 
@@ -57,14 +57,39 @@
             width: 25px;
             margin-left: 15px;
         }
+
+
+        .button {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #FFFFFF;
+            background: #3E3EE0FF;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            /* Adjustable properties */
+            width: auto; /* Adjust width */
+            height: 20px; /* Adjust height */
+            margin: 0 10px; /* Adjust margin */
+        }
+
+        .button:hover {
+            background: #2828DCFF;
+        }
+
+        .button:active {
+            background: #1D1DB2FF;
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img src="{{ asset('images/loginimg.png') }}" alt="logo" class="logo">
         <span class="navbar-text">ERovoutika Electronics Robotics Automation - InternHub</span>
-        <a href="intern/{id}/profile"><img src="{{ asset('images/icons8-settings-50.png') }}" class="icon"></a>
-        <a href=""><img src="{{ asset('images/icons8-bell-48.png')}}" class="icon"></a>
+        <a href="dar" class="button">Clock In</a>
         @if (Session::has('id'))
         <a class="nav-link" href="{{ route('client-profile', Session::get('id')) }}">
             <img src="{{ asset('images/icons8-user-50.png') }}" class="icon" alt="Profile">

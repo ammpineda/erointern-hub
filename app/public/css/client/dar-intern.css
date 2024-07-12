@@ -1,0 +1,69 @@
+body {
+    background-color: #001f3f;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dar-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.dar-table th, .dar-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.dar-table th {
+    background-color: #001a33;
+    color: white;
+}
+
+.action-button {
+    background-color: #3E3EE0;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.view-button:hover {
+    background-color: #3498db;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 0 10px;
+    }
+
+    .dar-table th, .dar-table td {
+        padding: 6px;
+    }
+}
