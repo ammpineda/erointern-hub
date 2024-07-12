@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Session;
 
 class DailyAccomplishmentFormController extends Controller
 {
+    public function index()
+    {
+        $accomplishments = DailyAccomplishment::all();
+        return view('management.manage-dars', compact('accomplishments'));
+    }
     public function submit(Request $request)
 {
     // Check if the user is logged in
