@@ -13,50 +13,33 @@
     <style>
         /* manage-interns.css */
 
-        /* Style for the table */
-        .table {
+        /* Style for the table */table {
             width: 100%;
             border-collapse: collapse;
-            border: 1px solid #ddd;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add box shadow */
+            background-color: #fff; /* White background */
+            border-radius: 5px; /* Rounded corners */
+            overflow: hidden; /* Prevents shadows from overflowing */
         }
 
-        /* Header style */
-        .table thead th {
-            background-color: #333;
-            color: #fff;
+        th, td {
+            border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
+            font-size: 14px;
+            color: #333;
         }
 
-        /* Row style */
-        .table tbody td {
-            border: 1px solid #ddd;
-            padding: 12px;
+        th {
+            background-color: #f2f2f2;
+            color: #000;
+            font-weight: bold;
+            text-transform: uppercase; /* Uppercase headings */
         }
 
-        /* Alternating row background */
-        .table tbody tr:nth-child(even) {
-            background-color: #e9e9e9;
-        }
-
-        /* Link style for Action column */
-        .table tbody td a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        /* Hover effect */
-        .table tbody tr:hover {
-            background-color: #ddd;
-        }
-
-        /* Responsive table */
-        @media screen and (max-width: 600px) {
-            .table {
-                overflow-x: auto;
-            }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
         }
     </style>
 </head>

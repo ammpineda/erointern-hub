@@ -168,6 +168,7 @@
             </thead>
             <tbody>
                 <tr>
+                    <td>Name</td>
                     <td>2024-06-03</td>
                     <td>Sample Title</td>
                     <td>9:00 AM</td>
