@@ -12,7 +12,7 @@
 <p>{{ $errors->first() }}</p>
 <body bgcolor = "red"
 >
-
+@include('error')
 <div><form method="POST" action="{{ route('add-announcement') }}">
     @csrf
 

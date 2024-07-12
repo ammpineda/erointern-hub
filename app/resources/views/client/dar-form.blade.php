@@ -10,19 +10,6 @@
 </head>
 <body>
 @include('navbar')
-@if ($errors->any())
-    <div class="error-container">
-        <h4>There is an issue</h4>
-        <p>{{ $errors->first() }}</p>
-    </div>
-@endif
-
-@if (session('error'))
-    <div class="error-container">
-        <h4>There is an issue</h4>
-        <p>{{ session('error') }}</p>
-    </div>
-@endif
 
 <h1 id="report-title">Daily Accomplishment Report</h1>
 
@@ -55,7 +42,7 @@
         Please submit the link to Clock-In & Clock-Out images and attachment for the Daily Activity Report.
     </p>
     <br>
-
+    @include('error')
             <div class="form-group">
                 <label for="attachment_file">Link to attachments</label>
                 <input type="text" id="attachment_file" name="attachment_file">

@@ -19,7 +19,6 @@ class DailyAccomplishmentFormController extends Controller
             'description' => 'nullable|string',
             'clock_in_at' => 'required|date_format:H:i',
             'clock_out_at' => 'required|date_format:H:i',
-
             'attachment_file' => '|string|max:2048',
         ]);
 

@@ -35,13 +35,17 @@
                 <tr>
                     <th>Date</th>
                     <th>Announcement</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>2024-06-03</td>
-                    <td>Announcement content goes here.</td>
-                </tr>
+                @foreach ($latestAnnouncements as $announcement)
+            <tr>
+                <td>{{ $announcement->created_at->format('Y-m-d') }}</td>
+                <td>{{ $announcement->title }}</td>
+                <td>{{ $announcement->description }}</td>
+            </tr>
+            @endforeach
                 <!-- More rows as needed -->
             </tbody>
         </table>
@@ -49,7 +53,7 @@
     </section>
     <!-- Section for displaying all the daily accomplishment report forms in a table -->
     <section id="daily-reports">
-        <h2>Daily Accomplishment Reports</h2>
+        <h2>Daily Accomplishment Reports of interns</h2>
         <table>
             <thead>
                 <tr>
@@ -59,47 +63,20 @@
                     <th>Clock-Out</th>
                     <th>Rendered Hours</th>
                     <th>Description</th>
-                    <th><a href="#">+ Export List</a></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($dailyAccomplishments as $dailyAccomplishment)
                 <tr>
-                    <td>2024-06-03</td>
-                    <td>Sample Title</td>
-                    <td>9:00 AM</td>
-                    <td>1:00 PM</td>
-                    <td>4</td>
-                    <td>Sample description goes here.</td>
+                    <td>{{ $dailyAccomplishment->created_at->format('Y-m-d') }}</td>                    <td>{{ $dailyAccomplishment->title }}</td>
+                    <td>{{ $dailyAccomplishment->clock_in_at}}</td>
+                    <td>{{ $dailyAccomplishment->clock_out_at}}</td>
+                    <td>{{ $dailyAccomplishment->rendered_hours }}</td>
+                    <td>{{ $dailyAccomplishment->description }}</td>
                     <td><a href="#">view</a></td>
                 </tr>
-                <tr>
-                    <td>2024-06-03</td>
-                    <td>Sample Title</td>
-                    <td>9:00 AM</td>
-                    <td>1:00 PM</td>
-                    <td>4</td>
-                    <td>Sample description goes here.</td>
-                    <td><a href="#">view</a></td>
-                </tr>
-                <tr>
-                    <td>2024-06-03</td>
-                    <td>Sample Title</td>
-                    <td>9:00 AM</td>
-                    <td>1:00 PM</td>
-                    <td>4</td>
-                    <td>Sample description goes here.</td>
-                    <td><a href="#">view</a></td>
-                </tr>
-                <tr>
-                    <td>2024-06-03</td>
-                    <td>Sample Title</td>
-                    <td>9:00 AM</td>
-                    <td>1:00 PM</td>
-                    <td>4</td>
-                    <td>Sample description goes here.</td>
-                    <td><a href="#">view</a></td>
-                </tr>
-                <!-- More rows as needed -->
+                @endforeach
             </tbody>
         </table>
         <a href="{{ route('ShowUserDars', ['id' => $userId]) }}" class="button">all DARs</a>
