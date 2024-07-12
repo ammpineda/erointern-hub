@@ -94,7 +94,6 @@
                     </button>
                 @else
                     <!-- Regular user with profile and settings icons -->
-                    <a href="{{ route('client-profile', ['id' => Session::get('id')]) }}"><img src="{{ asset('images/icons8-settings-50.png') }}" class="icon" alt="Settings"></a>
                     <a class="nav-link" href="{{ route('client-profile', Session::get('id')) }}">
                         <img src="{{ asset('images/icons8-user-50.png') }}" class="icon" alt="Profile">
                     </a>

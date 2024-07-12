@@ -162,8 +162,7 @@
                     <th>Clock-In</th>
                     <th>Clock-Out</th>
                     <th>Rendered Hours</th>
-                    <th>Description</th>
-                    <th></th>
+                    <th>ACTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -174,7 +173,6 @@
                     <td>9:00 AM</td>
                     <td>1:00 PM</td>
                     <td>4</td>
-                    <td>Sample description goes here.</td>
                     <td><a href="#">VIEW</a></td>
                 </tr>
             </tbody>
