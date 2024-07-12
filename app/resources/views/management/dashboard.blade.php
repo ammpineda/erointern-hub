@@ -128,13 +128,8 @@
 <body>
     @include('navbar')
     <br>
-    <section>
-        <p>
-            <a href="/admin/manage-interns" class="manage-btn">Manage Interns</a>
-            <a href="/admin/manage-admins" class="manage-btn">Manage Admins</a>
-            <a href="/admin/manage-announcements" class="manage-btn">Manage Announcements</a>
-        </p>
-    </section>
+
+    
     <br>
     <br>
     <!-- Section for displaying announcements -->
@@ -151,7 +146,7 @@
         <!-- Add more announcements as needed -->
 
         <!-- View All Announcements Button -->
-        <a href="#" class="view-all-btn">View All Announcements</a>
+        <a href="/admin/manage-announcements" class="manage-btn">Manage Announcements</a>
     </section>
     <br>
     <br>
@@ -180,20 +175,11 @@
                     <td>Sample description goes here.</td>
                     <td><a href="#">VIEW</a></td>
                 </tr>
-                <tr>
-                    <td>2024-06-03</td>
-                    <td>Sample Title</td>
-                    <td>9:00 AM</td>
-                    <td>1:00 PM</td>
-                    <td>4</td>
-                    <td>Sample description goes here.</td>
-                    <td><a href="#">VIEW</a></td>
-                </tr>
             </tbody>
         </table>
 
         <!-- View All Daily Reports Button -->
-        <a href="#" class="view-all-btn">View All Daily Reports</a>
+        <a href="/admin/manage-dars" class="view-all-btn">Manage Daily Reports</a> <a href="/admin/manage-interns" class="manage-btn">Manage Interns</a>
     </section>
 
 </body>

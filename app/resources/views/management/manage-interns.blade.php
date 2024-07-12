@@ -52,9 +52,10 @@
             <tr>
                 <th>No.</th>
                 <th>Intern Name</th>
+                <th>Username</th>
                 <th>Email</th>
-                <th>Password</th>
                 <th>Date Registered</th>
+                <th>Last Login Date</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -62,15 +63,11 @@
             @foreach ($interns as $intern)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $intern->last_name }}, {{ $intern->first_name }}, {{ $intern->middle_name }}</td>
+                <td>{{ $intern->last_name }}, {{ $intern->first_name }} {{ $intern->middle_name }}</td>
+                <td>{{ $intern->username }}</td>
                 <td>{{ $intern->email }}</td>
-                <td>
-                    <span class="password-visibility-toggle">
-                        <span class="password-text" style="display: none;">{{ $intern->password }}</span>
-                        <button class="btn btn-sm btn-secondary toggle-password-btn">Show</button>
-                    </span>
-                </td>
                 <td>{{ $intern->created_at }}</td>
+                <td>{{ $intern->last_login_at }}</td>
                 <td>View/Edit/Archive</td>
             </tr>
             @endforeach

@@ -48,6 +48,8 @@
             flex: 1;
             font-family: 'Lato', sans-serif;
             font-weight: bold;
+            cursor: pointer; /* Add cursor pointer for better UX */
+            text-decoration: none;
         }
 
         .navbar-icons {
@@ -67,7 +69,7 @@
         body {
             padding-left: 100px;
             padding-right: 100px;
-            padding-top:10px;
+            padding-top: 10px;
         }
     </style>
 </head>
@@ -75,7 +77,14 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img src="{{ asset('images/loginimg.png') }}" alt="logo" class="logo">
-        <span class="navbar-text">ERovoutika Electronics Robotics Automation - InternHub</span>
+        @if (Session::has('is_admin') && Session::get('is_admin') === true)
+            <a href="{{ route('admin-dashboard') }}" class="navbar-text">ERovoutika Electronics Robotics Automation - EroInternHub</a>
+        @elseif (Session::has('is_intern') && Session::get('is_intern') === true)
+            <a href="{{ route('intern-dashboard') }}" class="navbar-text">ERovoutika Electronics Robotics Automation - EroIntern Hub</a>
+        @else
+            <span class="navbar-text">ERovoutika Electronics Robotics Automation - InternHub</span>
+        @endif
+
         <div class="navbar-icons">
             @if (Session::has('id'))
                 @if (Session::get('is_admin') === true)
@@ -102,11 +111,11 @@
     </div>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var logoutBtn = document.getElementById('logoutBtn');
 
             if (logoutBtn) {
-                logoutBtn.addEventListener('click', function() {
+                logoutBtn.addEventListener('click', function () {
                     sessionStorage.clear(); // Clear all session storage
                     localStorage.clear(); // Clear all local storage
                     window.location.href = "{{ route('login.form') }}"; // Replace with your login form route
