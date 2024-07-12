@@ -207,7 +207,6 @@
                 <th>Clock-Out</th>
                 <th>Rendered Hours</th>
                 <th>Description</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -219,7 +218,6 @@
                     <td style="color:black;">{{ $dailyAccomplishment->clock_out_at }}</td>
                     <td style="color:black;">{{ $dailyAccomplishment->rendered_hours }}</td>
                     <td style="color:black;">{{ $dailyAccomplishment->description }}</td>
-                    <td style="color:black;"><a href="#">view</a></td>
                 </tr>
             @endforeach
         </tbody>
