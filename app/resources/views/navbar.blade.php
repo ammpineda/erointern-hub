@@ -89,7 +89,7 @@
                 @if (Session::get('is_admin') === true && Session::get('is_intern') === false)
                     <!-- If user is admin, hide settings and profile icons -->
                     <button id="logoutBtn" class="icon-btn" title="Logout">
-                        <i class="fas fa-sign-out-alt"></i> Logout
+                        <i class="fas fa-sign-out-alt"></i> LOGOUT
                     </button>
                 @else
                     <!-- Regular user with profile and settings icons -->
@@ -97,7 +97,7 @@
                         <img src="{{ asset('images/icons8-user-50.png') }}" class="icon" alt="Profile">
                     </a>
                     <button id="logoutBtn" class="icon-btn" title="Logout">
-                        <i class="fas fa-sign-out-alt"></i> Logout
+                        <i class="fas fa-sign-out-alt"></i> LOGOUT
                     </button>
                 @endif
             @endif

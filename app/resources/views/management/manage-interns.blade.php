@@ -259,7 +259,7 @@
                     <td>{{ $intern->last_login_at }}</td>
                     <td>
                         <div class="action-buttons">
-                            <button class="manage-details-button">Manage Details</button>
+                            <a href="{{ route('client-profile', ['id' => $intern->id]) }}" class="manage-details-button">Manage Details</a>
                             <button class="deactivate-button">Deactivate</button>
                         </div>
                     </td>

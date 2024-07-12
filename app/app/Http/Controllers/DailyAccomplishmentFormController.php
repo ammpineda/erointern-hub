@@ -11,7 +11,16 @@ class DailyAccomplishmentFormController extends Controller
 {
     public function index()
     {
-        $accomplishments = DailyAccomplishment::all();
+        // Get today's date in the correct format for comparison
+        $todayDate = Carbon::today()->toDateString();
+    
+        // Fetch accomplishments where created_at is today's date and is_approved is false
+        $accomplishments = DailyAccomplishment::where(function ($query) use ($todayDate) {
+                $query->whereDate('created_at', $todayDate)
+                      ->orWhere('is_approved', 0); // Adding OR condition for is_approved = false
+            })
+            ->get();
+    
         return view('management.manage-dars', compact('accomplishments'));
     }
     public function submit(Request $request)

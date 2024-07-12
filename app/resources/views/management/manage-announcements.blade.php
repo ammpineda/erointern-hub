@@ -174,6 +174,15 @@
                 </tr>
             </thead>
             <tbody>
+
+            @if ($announcements->isEmpty())
+            
+            <tr>
+            <td colspan="5" style="text-align:center;">There are no existing announcements.</td>
+        </tr>
+            
+            @else
+
                 @foreach ($announcements as $announcement)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
@@ -189,6 +198,7 @@
                     </td>
                 </tr>
                 @endforeach
+                @endif
             </tbody>
         </table>
 

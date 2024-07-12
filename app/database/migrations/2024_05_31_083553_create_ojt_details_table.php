@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('ojt_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->integer('required_hours');
-            $table->integer('rendered_hours');
-            $table->integer('remaining_hours');
-            $table->boolean('has_endorsement_letter');
-            $table->boolean('has_acceptance_letter');
-            $table->date('onboard_at');
+            $table->integer('required_hours')->nullable();
+            $table->integer('rendered_hours')->nullable();
+            $table->integer('remaining_hours')->nullable();
+            $table->boolean('has_endorsement_letter')->nullable();
+            $table->boolean('has_acceptance_letter')->nullable();
+            $table->date('onboard_at')->nullable();
             $table->date('exit_at')->nullable();
             $table->timestamps();
         });

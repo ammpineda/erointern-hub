@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('job_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('department');
-            $table->string('job_title');
-            $table->string('supervisor');
+            $table->string('department')->nullable();
+            $table->string('job_title')->nullable();
+            $table->string('supervisor')->nullable();
             $table->timestamps();
         });
     }

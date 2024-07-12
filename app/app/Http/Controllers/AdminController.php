@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobDetail;
+use App\Models\OjtDetail;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -44,6 +46,26 @@ class AdminController extends Controller
             $user->password = bcrypt($request->input('password')); // Ensure to hash the password
             $user->save();
 
+            // Create OjtDetail for the user with default values
+            $ojtDetail = new OjtDetail();
+            $ojtDetail->user_id = $user->id;
+            $ojtDetail->required_hours = 0; // Default value
+            $ojtDetail->rendered_hours = 0; // Default value
+            $ojtDetail->remaining_hours = 0; // Default value
+            $ojtDetail->has_endorsement_letter = false; // Default value
+            $ojtDetail->has_acceptance_letter = false; // Default value
+            $ojtDetail->onboard_at = null; // Default value
+            $ojtDetail->exit_at = null; // Default value
+            $ojtDetail->save();
+
+            // Create JobDetail for the user with default values
+            $jobDetail = new JobDetail();
+            $jobDetail->user_id = $user->id;
+            $jobDetail->department = ''; // Default value
+            $jobDetail->job_title = ''; // Default value
+            $jobDetail->supervisor = ''; // Default value
+            $jobDetail->save();
+
             // Commit transaction
             DB::commit();
 
@@ -67,7 +89,4 @@ class AdminController extends Controller
         // Pass the users data to the view
         return view('management.manage-interns', compact('interns'));
     }
-
 }
-
-

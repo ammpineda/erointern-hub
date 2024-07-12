@@ -161,6 +161,9 @@
     <!-- Section for displaying announcements -->
     <section id="announcements">
         <h2>Announcements</h2>
+        @if ($latestAnnouncements->isEmpty())
+        <p>There are no announcements as of today. Please stay in touch.</p>
+        @else
         @php $count = 0; @endphp
         @foreach ($latestAnnouncements as $announcement)
         @if ($count < 3)
@@ -175,6 +178,8 @@
         @endif
         @endforeach
 
+        
+        @endif
         <!-- View All Announcements Button -->
         <div style="text-align: center;">
             <a href="/admin/manage-announcements" class="manage-btn">MANAGE ANNOUNCEMENTS</a>
@@ -186,6 +191,9 @@
     <!-- Section for displaying list of daily accomplishment reports -->
     <section id="daily-reports">
         <h2>Recently Submitted Daily Accomplishments</h2>
+        @if ($dailyAccomplishments->isEmpty())
+        <p>There are no submitted reports as of today.</p>
+        @else
         <table>
             <thead>
                 <tr>
@@ -218,9 +226,12 @@
         </table>
         <br>
 
+        @endif
+        
         <!-- View All Daily Reports Button -->
         <div style="text-align: center;">
-            <a href="/admin/manage-dars" style="color:white; text-decoration:none;" class="manage-btn">MANAGE RECENT DAILY REPORTS</a>
+            <a href="/admin/manage-dars" style="color:white; text-decoration:none;" class="manage-btn">MANAGE RECENT
+                DAILY REPORTS</a>
             <a href="/admin/manage-interns" style="color:white; text-decoration:none;" class="manage-btn">MANAGE INTERNS</a>
         </div>
     </section>
