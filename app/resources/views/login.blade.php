@@ -15,7 +15,7 @@
 
 <body>
     <nav class="navbar">
-        <img src="{{ asset('images/loginlogo.png') }}" alt="logo" class="logo">
+        <img src="{{ asset('images/loginimg.png') }}" alt="logo" class="logo">
         <div class="icons">
             <i class="fa-solid fa-globe"></i>
             <i class="fa-regular fa-circle-question"></i>
