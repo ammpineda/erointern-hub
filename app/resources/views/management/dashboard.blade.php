@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" />
-    
+
     <style>
         /* Additional styles for the announcements section */
         #announcements {
@@ -129,7 +129,7 @@
     @include('navbar')
     <br>
 
-    
+
     <br>
     <br>
     <!-- Section for displaying announcements -->
@@ -148,6 +148,7 @@
         <!-- View All Announcements Button -->
         <a href="/admin/manage-announcements" class="manage-btn">Manage Announcements</a>
     </section>
+
     <br>
     <br>
     <!-- Section for displaying list of daily accomplishment reports -->
@@ -179,7 +180,31 @@
         </table>
 
         <!-- View All Daily Reports Button -->
-        <a href="/admin/manage-dars" class="view-all-btn">Manage Daily Reports</a> <a href="/admin/manage-interns" class="manage-btn">Manage Interns</a>
+        <a href="/admin/manage-dars" class="view-all-btn" style="            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0056b3; /* Green background */
+            color: #ffffff; /* White text */
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;">Manage Daily Reports</a>
+
+
+            <a href="/admin/manage-interns" class="manage-btn" style="            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745; /* Green background */
+            color: #ffffff; /* White text */
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px; /* Adjust spacing */">Manage Interns</a>
+
     </section>
 
 </body>
