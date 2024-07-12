@@ -77,7 +77,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img src="{{ asset('images/loginimg.png') }}" alt="logo" class="logo">
         @if (Session::has('is_admin') && Session::get('is_admin') === true)
-            <a href="{{ route('admin-dashboard') }}" class="navbar-text">ERovoutika Electronics Robotics Automation - EroIntern Hub</a>
+            <a href="{{ route('admin-dashboard') }}" class="navbar-text">ERovoutika Electronics Robotics Automation - EroIntern Hub (Admin)</a>
         @elseif (Session::has('is_intern') && Session::get('is_intern') === true)
             <a href="{{ route('intern-dashboard') }}" class="navbar-text">ERovoutika Electronics Robotics Automation - EroIntern Hub</a>
         @else

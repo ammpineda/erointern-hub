@@ -13,71 +13,71 @@
     <style>
         /* Additional styles for the modal */
         .modal {
-            display: none;
-            /* Hidden by default */
-            position: fixed;
-            /* Stay in place */
-            z-index: 1000;
-            /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.4);
-            /* Black with opacity */
-        }
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1000;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black with opacity */
+    }
 
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        /* 5% from the top and centered */
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 80%;
+        /* Could be more or less, depending on screen size */
+        max-width: 600px;
+        /* Limit maximum width */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Box shadow */
+    }
+
+    /* Close button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* Ensure description textarea stays within modal */
+    .modal-content textarea {
+        width: calc(100% - 40px);
+        /* Account for padding and border */
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+        /* Allow vertical resizing */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
         .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            /* 5% from the top and centered */
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 80%;
-            /* Could be more or less, depending on screen size */
-            max-width: 600px;
-            /* Limit maximum width */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* Box shadow */
+            margin: 10% auto;
+            width: 90%;
         }
-
-        /* Close button */
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Ensure description textarea stays within modal */
-        .modal-content textarea {
-            width: calc(100% - 40px);
-            /* Account for padding and border */
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: vertical;
-            /* Allow vertical resizing */
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .modal-content {
-                margin: 10% auto;
-                width: 90%;
-            }
-        }
+    }
 
         /* Table styles */
         table {
