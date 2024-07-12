@@ -109,7 +109,7 @@
         .manage-btn {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #28a745; /* Green background */
+            background-color: #2828DCFF; /* Green background */
             color: #ffffff; /* White text */
             text-decoration: none;
             border: none;
@@ -118,10 +118,11 @@
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px; /* Adjust spacing */
+            margin left: 1000px;
         }
 
         .manage-btn:hover {
-            background-color: #218838; /* Darker green on hover */
+            background-color: #2828DCFF; /* Darker green on hover */
         }
     </style>
 </head>
@@ -146,7 +147,9 @@
         <!-- Add more announcements as needed -->
 
         <!-- View All Announcements Button -->
+        <div style="text-align: center;">
         <a href="/admin/manage-announcements" class="manage-btn">Manage Announcements</a>
+        </div>
     </section>
 
     <br>
@@ -180,9 +183,10 @@
         </table>
 
         <!-- View All Daily Reports Button -->
+        <div style="text-align: center;">
         <a href="/admin/manage-dars" class="view-all-btn" style="            display: inline-block;
             padding: 10px 20px;
-            background-color: #0056b3; /* Green background */
+            background-color: #2828DCFF; /* Green background */
             color: #ffffff; /* White text */
             text-decoration: none;
             border: none;
@@ -195,7 +199,7 @@
 
             <a href="/admin/manage-interns" class="manage-btn" style="            display: inline-block;
             padding: 10px 20px;
-            background-color: #28a745; /* Green background */
+            background-color: #2828DCFF; /* Green background */
             color: #ffffff; /* White text */
             text-decoration: none;
             border: none;
@@ -204,7 +208,7 @@
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px; /* Adjust spacing */">Manage Interns</a>
-
+        </div>
     </section>
 
 </body>
