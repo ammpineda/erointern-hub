@@ -56,3 +56,5 @@ Route::get('admin/manage-dars', [DailyAccomplishmentFormController::class, 'inde
 Route::get('admin/manage-announcements', [AnnouncementController::class, 'displayAnnouncements'])->name('display-announcements');
 //route for adding announcements
 Route::post('/admin/add-announce', [AnnouncementController::class, 'addAnnouncement'])->name('add-announcement');
+
+Route::delete('/admin/delete-announce/{announcement}', [AnnouncementController::class, 'deleteAnnouncement'])->name('delete-announcement');

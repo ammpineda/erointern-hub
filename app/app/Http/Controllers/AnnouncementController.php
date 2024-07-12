@@ -60,5 +60,9 @@ public function addAnnouncement(Request $request)
         // Redirect to the announcements list with a success message
         return redirect()->route('display-announcements')->with('success', 'Announcement created successfully.');
     }
-
+    public function deleteAnnouncement(Announcement $announcement)
+    {
+        $announcement->delete();
+        return redirect()->back()->with('success', 'Announcement deleted successfully.');
+    }
 }
