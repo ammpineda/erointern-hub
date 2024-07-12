@@ -156,6 +156,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>User</th>
                     <th>Date</th>
                     <th>Title</th>
                     <th>Clock-In</th>
@@ -166,6 +167,7 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($dailyAccomplishments as $dailyAccomplishment)
                 <tr>
                     <td>2024-06-03</td>
                     <td>Sample Title</td>
