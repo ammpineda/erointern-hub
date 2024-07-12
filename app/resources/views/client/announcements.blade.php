@@ -5,8 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Announcements</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link href="{{ asset('css/announcements.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5e71518412.js" crossorigin="anonymous"></script>
+
+    <style>
+        .announcement {
+                margin-bottom: 20px;
+                padding: 15px;
+                background-color: #ffffff;
+                /* White background */
+                border: 1px solid #ced4da;
+                /* Light gray border */
+                border-radius: 8px;
+                /* Rounded corners */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                /* Soft shadow */
+            }
+
+            .announcement h3 {
+                margin: 0;
+                color: #007bff;
+                /* Blue title color */
+                font-size: 1.5rem;
+                /* Larger title font size */
+            }
+
+            .announcement .date {
+                font-size: 0.9rem;
+                color: #6c757d;
+                /* Gray date color */
+                margin-bottom: 10px;
+                /* Space below the date */
+            }
+
+            .announcement p {
+                margin-bottom: 0;
+                font-size: 1rem;
+                color: #495057;
+                /* Dark gray text */
+            }
+
+            .announcement a {
+                color: #007bff;
+                /* Blue link color */
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            .announcement a:hover {
+                text-decoration: underline;
+            }</style>
     <script>
         function openPopup() {
             document.getElementById('popup-form').style.display = 'block';
@@ -23,27 +70,20 @@
 
 
     <div class="content-container">
-        <table class="announcement-table">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Posted By</th>
-                    <th>Created At</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($announcements as $announcement)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $announcement->title }}</td>
-                    <td>{{ $announcement->description }}</td>
-                    <td>{{ $announcement->user->username }}</td>
-                    <td>{{ $announcement->created_at }}</td>
-
-                </tr>
-            @endforeach
+        <h2>Announcements</h2>
+        @php $count = 0; @endphp
+        @foreach ($announcements as $announcement)
+        @if ($count < 3)
+        <div class="announcement">
+            <h3>{{ $announcement->title }}</h3>
+            <div class="date">{{ $announcement->created_at }}</div>
+            <p>{{ $announcement->description }}</p>
+        </div>
+        @php $count++; @endphp
+        @else
+        @break
+        @endif
+        @endforeach
             @push('scripts')
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
