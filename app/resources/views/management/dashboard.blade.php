@@ -118,7 +118,6 @@
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px; /* Adjust spacing */
-            margin left: 1000px;
         }
 
         .manage-btn:hover {
@@ -148,7 +147,7 @@
 
         <!-- View All Announcements Button -->
         <div style="text-align: center;">
-        <a href="/admin/manage-announcements" class="manage-btn">Manage Announcements</a>
+        <a href="/admin/manage-announcements" class="manage-btn">MANAGE ANNOUNCEMENTS</a>
         </div>
     </section>
 
@@ -194,7 +193,7 @@
             font-size: 14px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 10px;">Manage Daily Reports</a>
+            margin-top: 10px;">MANAGE DAILY REPORTS</a>
 
 
             <a href="/admin/manage-interns" class="manage-btn" style="            display: inline-block;
@@ -207,7 +206,7 @@
             font-size: 14px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 10px; /* Adjust spacing */">Manage Interns</a>
+            margin-top: 10px; /* Adjust spacing */">MANAGE INTERNS</a>
         </div>
     </section>
 

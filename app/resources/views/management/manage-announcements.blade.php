@@ -157,7 +157,6 @@
     @include('error')
 
     <div class="content-container">
-
         <!-- Button to open the modal -->
         <button id="openModalBtn" class="create-btn">Create Announcement</button>
 <br>
@@ -216,35 +215,6 @@
         </div>
     </div>
 
-
-    <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Created At</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($announcements as $announcement)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $announcement->title }}</td>
-                    <td>{{ $announcement->description }}</td>
-                    <td>{{ $announcement->created_at }}</td>
-                    <td>
-                        <form action="{{ route('delete-announcement', $announcement->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="deletebutton">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
 
 
 
