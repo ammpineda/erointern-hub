@@ -22,7 +22,6 @@
             /* Full width */
             font-weight: normal;
             text-shadow: 1px 1px #000000;
-            background-image: url('images/navbg.png');
             background-size: 100% auto;
             /* Stretch the image horizontally */
             background-repeat: no-repeat;
