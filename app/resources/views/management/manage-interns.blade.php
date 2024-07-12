@@ -11,171 +11,221 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
-    /* General styles */
-    body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
-    }
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
 
-    .content-container {
-        max-width: 1200px;
-        margin: 20px auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+        .content-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-    .search-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 20px;
-    }
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
 
-    .form-control {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-        width: 200px;
-    }
+        .form-control {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 200px;
+        }
 
-    .register-button {
-        padding: 10px 20px;
-        background-color: #2828DCFF;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 14px;
-        text-transform: uppercase;
-    }
+        .register-button {
+            padding: 10px 20px;
+            background-color: #2828DCFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
 
-    .intern-table {
-        width: 100%;
-        border-collapse: collapse;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-        border-radius: 5px;
-        overflow: hidden;
-    }
+        .intern-table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
 
-    .intern-table th,
-    .intern-table td {
-        border: 1px solid #ddd;
-        padding: 12px;
-        text-align: left;
-        font-size: 14px;
-        color: #333;
-    }
+        .intern-table th,
+        .intern-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+            color: #333;
+        }
 
-    .intern-table th {
-        background-color: #f2f2f2;
-        color: #000;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
+        .intern-table th {
+            background-color: #f2f2f2;
+            color: #000;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
 
-    .intern-table tbody tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
+        .intern-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-    .popup-form {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
-    }
+        .popup-form {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
 
-    .popup-content {
-        background-color: #08106b; /* Updated background color */
-        color: #fff; /* Text color */
-        margin: 10% auto;
-        padding: 20px;
-        border-radius: 8px;
-        width: 70%; /* Adjusted width */
-        max-width: 400px; /* Adjusted max-width */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        position: relative;
-    }
+        .popup-content {
+            background-color: #08106b;
+            /* Updated background color */
+            color: #fff;
+            /* Text color */
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 70%;
+            /* Adjusted width */
+            max-width: 400px;
+            /* Adjusted max-width */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
 
-    .close-button {
-        color: #555;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 24px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: color 0.3s ease;
-    }
+        .close-button {
+            color: #555;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
 
-    .close-button:hover,
-    .close-button:focus {
-        color: #fff;
-        text-decoration: none;
-    }
+        .close-button:hover,
+        .close-button:focus {
+            color: #fff;
+            text-decoration: none;
+        }
 
-    .close-button:active {
-        transform: scale(0.9);
-    }
+        .close-button:active {
+            transform: scale(0.9);
+        }
 
-    .register-submit-button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 14px;
-        text-transform: uppercase;
-        transition: background-color 0.3s ease;
-    }
+        .register-submit-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
 
-    .register-submit-button:hover,
-    .register-submit-button:focus {
-        background-color: #0056b3;
-        outline: none;
-    }
+        .register-submit-button:hover,
+        .register-submit-button:focus {
+            background-color: #0056b3;
+            outline: none;
+        }
 
-    .form-group {
-        margin-bottom: 15px; /* Reduced margin */
-    }
+        .form-group {
+            margin-bottom: 15px;
+            /* Reduced margin */
+        }
 
-    .form-label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-        font-size: 13px; /* Adjusted font size */
-    }
+        .form-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 13px;
+            /* Adjusted font size */
+        }
 
-    .form-input {
-        width: 100%;
-        padding: 8px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-    /* Password toggle icon */
-    .toggle-password {
-        position: absolute;
-        margin-top: -10px;
-        right: 10px;
-        transform: translateY(-50%);
-        cursor: pointer;
-        color: #000; /* Black color */
-    }
-</style>
+        /* Password toggle icon */
+        .toggle-password {
+            position: absolute;
+            margin-top: -10px;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #000;
+            /* Black color */
+        }
+
+        /* Actions buttons */
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .manage-details-button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        .manage-details-button:hover,
+        .manage-details-button:focus {
+            background-color: #0056b3;
+            outline: none;
+        }
+
+        .deactivate-button {
+            padding: 8px 16px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        .deactivate-button:hover,
+        .deactivate-button:focus {
+            background-color: #c82333;
+            outline: none;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -207,7 +257,12 @@
                     <td>{{ $intern->email }}</td>
                     <td>{{ $intern->created_at }}</td>
                     <td>{{ $intern->last_login_at }}</td>
-                    <td>View/Edit/Archive</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="manage-details-button">Manage Details</button>
+                            <button class="deactivate-button">Deactivate</button>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -244,8 +299,7 @@
                     <label for="password" class="form-label">Password:</label>
                     <div style="position: relative;">
                         <input type="password" id="password" name="password" class="form-input" required>
-                        <span id="togglePassword" class="toggle-password fa fa-eye"
-                            onclick="togglePasswordVisibility('password')"></span>
+                        <span id="togglePassword" class="toggle-password fa fa-eye" onclick="togglePasswordVisibility('password')"></span>
                     </div>
                 </div>
 
@@ -282,7 +336,7 @@
 
         // Search functionality
         const searchType = 'name';
-        document.getElementById('search-input').addEventListener('input', function () {
+        document.getElementById('search-input').addEventListener('input', function() {
             const searchTerm = this.value.trim().toLowerCase();
             const searchType = 'name';
             const tableRows = document.querySelectorAll('.intern-table tbody tr');
@@ -295,5 +349,6 @@
         });
     </script>
 </body>
+
 
 </html>

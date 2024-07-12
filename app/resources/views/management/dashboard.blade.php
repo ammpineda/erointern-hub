@@ -220,7 +220,7 @@
 
         <!-- View All Daily Reports Button -->
         <div style="text-align: center;">
-            <a href="/admin/manage-dars" style="color:white; text-decoration:none;" class="manage-btn">MANAGE DAILY REPORTS</a>
+            <a href="/admin/manage-dars" style="color:white; text-decoration:none;" class="manage-btn">MANAGE RECENT DAILY REPORTS</a>
             <a href="/admin/manage-interns" style="color:white; text-decoration:none;" class="manage-btn">MANAGE INTERNS</a>
         </div>
     </section>
