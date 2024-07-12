@@ -21,10 +21,12 @@
             /* Gray border */
             border-radius: 8px;
             /* Rounded corners */
+            margin-bottom: 20px;
+            /* Add some space below */
         }
 
         .announcement {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             padding: 15px;
             background-color: #ffffff;
             /* White background */
@@ -37,8 +39,19 @@
         }
 
         .announcement h3 {
-            margin-top: 0;
-            color: black;
+            margin: 0;
+            color: #007bff;
+            /* Blue title color */
+            font-size: 1.5rem;
+            /* Larger title font size */
+        }
+
+        .announcement .date {
+            font-size: 0.9rem;
+            color: #6c757d;
+            /* Gray date color */
+            margin-bottom: 10px;
+            /* Space below the date */
         }
 
         .announcement p {
@@ -108,7 +121,8 @@
         }
 
         /* View all button style */
-        .view-all-btn {
+        .view-all-btn,
+        .manage-btn {
             display: inline-block;
             padding: 10px 20px;
             background-color: #007bff;
@@ -127,32 +141,15 @@
             /* Adjust spacing */
         }
 
-        .view-all-btn:hover {
+        .view-all-btn:hover,
+        .manage-btn:hover {
             background-color: #0056b3;
             /* Darker blue on hover */
         }
 
-        /* Button styles for manage links */
-        .manage-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #2828DCFF;
-            /* Green background */
-            color: #ffffff;
-            /* White text */
-            text-decoration: none;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            /* Adjust spacing */
-        }
-
-        .manage-btn:hover {
-            background-color: #2828DCFF;
-            /* Darker green on hover */
+        section {
+            margin-left: 100px;
+            margin-right:100px;
         }
     </style>
 </head>
@@ -166,29 +163,29 @@
         <h2>Announcements</h2>
         @php $count = 0; @endphp
         @foreach ($latestAnnouncements as $announcement)
-        @if ($count < 3) <div class="announcement">
-            <h3>{{ $announcement->title }} [<span style="color: #007bff;">{{ $announcement->created_at }}</span>]</h3>
+        @if ($count < 3)
+        <div class="announcement">
+            <h3>{{ $announcement->title }}</h3>
+            <div class="date">{{ $announcement->created_at }}</div>
             <p>{{ $announcement->description }}</p>
-            </div>
-            @php $count++; @endphp
-            @else
-            @break
-            @endif
-            @endforeach
+        </div>
+        @php $count++; @endphp
+        @else
+        @break
+        @endif
+        @endforeach
 
-
-
-            <!-- View All Announcements Button -->
-            <div style="text-align: center;">
-                <a href="/admin/manage-announcements" class="manage-btn">MANAGE ANNOUNCEMENTS</a>
-            </div>
+        <!-- View All Announcements Button -->
+        <div style="text-align: center;">
+            <a href="/admin/manage-announcements" class="manage-btn">MANAGE ANNOUNCEMENTS</a>
+        </div>
     </section>
 
     <br>
     <br>
     <!-- Section for displaying list of daily accomplishment reports -->
     <section id="daily-reports">
-        <h2>Recent Submitted Daily Accomplishments</h2>
+        <h2>Recently Submitted Daily Accomplishments</h2>
         <table>
             <thead>
                 <tr>
@@ -202,7 +199,7 @@
             </thead>
             <tbody>
                 @foreach ($dailyAccomplishments as $accomplishment)
-                <tr style="color:black;">
+                <tr>
                     <td style="color:black;">{{ $accomplishment->user->first_name }} {{ $accomplishment->user->last_name }}</td>
                     <td style="color:black;">{{ $accomplishment->created_at }}</td>
                     <td style="color:black;">{{ $accomplishment->title }}</td>
@@ -223,7 +220,7 @@
 
         <!-- View All Daily Reports Button -->
         <div style="text-align: center;">
-            <a href="/admin/manage-dars" style="color:white; text-decoration:none;" class="manage-btn">MANAGE DAILY REPORTS</a> &nbsp
+            <a href="/admin/manage-dars" style="color:white; text-decoration:none;" class="manage-btn">MANAGE DAILY REPORTS</a>
             <a href="/admin/manage-interns" style="color:white; text-decoration:none;" class="manage-btn">MANAGE INTERNS</a>
         </div>
     </section>
