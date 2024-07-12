@@ -140,10 +140,7 @@
     @include('error')
     <div class="content-container">
         <div class="search-container">
-            <select id="search-type" class="form-control">
-                <option value="name">By Name</option>
-                <option value="email">By Email</option>
-            </select>
+
             <input type="text" id="search-input" class="form-control" placeholder="Search..." />
             <button class="register-button" onclick="openPopup()">Register Intern</button>
         </div>
@@ -161,15 +158,15 @@
             </thead>
             <tbody id="table-body">
                 @foreach ($interns as $intern)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $intern->last_name }}, {{ $intern->first_name }} {{ $intern->middle_name }}</td>
-                    <td>{{ $intern->username }}</td>
-                    <td>{{ $intern->email }}</td>
-                    <td>{{ $intern->created_at }}</td>
-                    <td>{{ $intern->last_login_at }}</td>
-                    <td>View/Edit/Archive</td>
-                </tr>
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $intern->last_name }}, {{ $intern->first_name }} {{ $intern->middle_name }}</td>
+                        <td>{{ $intern->username }}</td>
+                        <td>{{ $intern->email }}</td>
+                        <td>{{ $intern->created_at }}</td>
+                        <td>{{ $intern->last_login_at }}</td>
+                        <td>View/Edit/Archive</td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
@@ -196,13 +193,15 @@
                 <label for="password">Password:</label>
                 <div style="position: relative;">
                     <input type="password" id="password" name="password" required>
-                    <span id="togglePassword" class="toggle-password fa fa-eye" onclick="togglePasswordVisibility('password')"></span>
+                    <span id="togglePassword" class="toggle-password fa fa-eye"
+                        onclick="togglePasswordVisibility('password')"></span>
                 </div><br>
 
                 <label for="password_confirmation">Confirm Password:</label>
                 <div style="position: relative;">
                     <input type="password" id="password_confirmation" name="password_confirmation" required>
-                    <span id="toggleConfirmPassword" class="toggle-password fa fa-eye" onclick="togglePasswordVisibility('password_confirmation')"></span>
+                    <span id="toggleConfirmPassword" class="toggle-password fa fa-eye"
+                        onclick="togglePasswordVisibility('password_confirmation')"></span>
                 </div><br>
 
                 <button type="submit" class="register-submit-button">Register</button>
@@ -237,13 +236,15 @@
         }
 
         // Search functionality
+        const searchType = 'name';
         document.getElementById('search-input').addEventListener('input', function() {
             const searchTerm = this.value.trim().toLowerCase();
-            const searchType = document.getElementById('search-type').value;
+            const searchType = 'name';
             const tableRows = document.querySelectorAll('.intern-table tbody tr');
 
             tableRows.forEach(row => {
-                const rowText = row.querySelector(`td:nth-child(${searchType === 'name' ? 2 : 3})`).textContent.trim().toLowerCase();
+                const rowText = row.querySelector(`td:nth-child(${searchType === 'name' ? 2 : 3})`)
+                    .textContent.trim().toLowerCase();
                 row.style.display = rowText.includes(searchTerm) ? '' : 'none';
             });
         });
