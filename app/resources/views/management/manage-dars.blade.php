@@ -56,7 +56,7 @@
 <body>
     @include('navbar')
     <div class="container mt-5">
-        <h1 class="mb-4">Daily Accomplishments</h1>
+        <h1 class="mb-4">Today's Daily Accomplishments</h1>
         <table class="table table-bordered">
             <thead>
                 <tr>
