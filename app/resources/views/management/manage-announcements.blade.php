@@ -161,7 +161,9 @@
             <td>{{ $announcement->title }}</td>
             <td>{{ $announcement->description }}</td>
             <td>{{ $announcement->created_at }}</td>
-            <td>View/Edit/Delete</td>
+            <td>
+
+        </td>
         </tr>
         @endforeach
     </tbody>
