@@ -13,7 +13,7 @@
 
     @include('navbar')
     <!-- Section for displaying rendered hours -->
-    <a href="dar" class="button">Clock In</a>
+    
     <div class="sections-container">
     <section id="rendered-hours">
         <h2>Rendered Hours</h2>
