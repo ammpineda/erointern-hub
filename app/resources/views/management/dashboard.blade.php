@@ -140,18 +140,27 @@
     <!-- Section for displaying announcements -->
     <section id="announcements">
         <h2>Announcements</h2>
-        <div class="announcement">
-            <h3>2024-06-03</h3>
-            <p>Announcement content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">Read more...</a></p>
-        </div>
-        <div class="announcement">
-            <h3>2024-06-02</h3>
-            <p>Another announcement content goes here. Nulla vehicula nisl non enim lacinia, ac interdum leo congue. <a href="#">Read more...</a></p>
-        </div>
-        <!-- Add more announcements as needed -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Announcement</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($latestAnnouncements as $announcement)
+                <tr>
+                    <td>{{ $announcement->created_at->format('Y-m-d') }}</td>
+                    <td>{{ $announcement->title }}</td>
+                    <td>{{ $announcement->description }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        <a href="/announcements" class="button">all announcements</a>
 
-        <!-- View All Announcements Button -->
-        <a href="#" class="view-all-btn">View All Announcements</a>
+
     </section>
     <br>
     <br>
@@ -161,6 +170,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>User</th>
                     <th>Date</th>
                     <th>Title</th>
                     <th>Clock-In</th>
@@ -171,24 +181,19 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($dailyAccomplishments as $dailyAccomplishment)
                 <tr>
-                    <td>2024-06-03</td>
-                    <td>Sample Title</td>
-                    <td>9:00 AM</td>
-                    <td>1:00 PM</td>
-                    <td>4</td>
-                    <td>Sample description goes here.</td>
-                    <td><a href="#">VIEW</a></td>
+                    <td>{{ $dailyAccomplishment->user->first_name }} {{ $dailyAccomplishment->user->middle_name }} {{ $dailyAccomplishment->user->last_name }}</td>
+                    <td>{{ $dailyAccomplishment->created_at->format('Y-m-d') }}</td>
+                    <td>{{ $dailyAccomplishment->title }}</td>
+                    <td>{{ $dailyAccomplishment->clock_in_at }}</td>
+                    <td>{{ $dailyAccomplishment->clock_out_at }}</td>
+                    <td>{{ $dailyAccomplishment->rendered_hours }}</td>
+                    <td>{{ $dailyAccomplishment->description }}</td>
+                    <td><a href="#">view</a></td>
                 </tr>
-                <tr>
-                    <td>2024-06-03</td>
-                    <td>Sample Title</td>
-                    <td>9:00 AM</td>
-                    <td>1:00 PM</td>
-                    <td>4</td>
-                    <td>Sample description goes here.</td>
-                    <td><a href="#">VIEW</a></td>
-                </tr>
+                @endforeach
+
             </tbody>
         </table>
 

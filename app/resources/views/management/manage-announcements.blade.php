@@ -7,13 +7,16 @@
     <title>EroIntern Hub | Manage Interns</title>
     <a href=""></a>
 
-    <!-- Custom CSS Link -->
-    <link href="{{ asset('css/management/manage-interns.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <p>{{ $errors->first() }}</p>
+        <!-- Custom CSS Link -->
+<link href="{{ asset('css/management/manage-interns.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<p>{{ $errors->first() }}</p>
+<body bgcolor = "red"
+>
+@include('error')
+<div><form method="POST" action="{{ route('add-announcement') }}">
+    @csrf
 
-<body bgcolor="red">
-@include('navbar')
 
     <div>
         <form method="POST" action="{{ route('add-announcement') }}">
