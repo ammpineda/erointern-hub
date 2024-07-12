@@ -137,11 +137,11 @@
         <h2>Announcements</h2>
         <div class="announcement">
             <h3>2024-06-03</h3>
-            <p>Announcement content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">Read more...</a></p>
+            <p>Announcement content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
         <div class="announcement">
             <h3>2024-06-02</h3>
-            <p>Another announcement content goes here. Nulla vehicula nisl non enim lacinia, ac interdum leo congue. <a href="#">Read more...</a></p>
+            <p>Another announcement content goes here. Nulla vehicula nisl non enim lacinia, ac interdum leo congue.</p>
         </div>
         <!-- Add more announcements as needed -->
 
@@ -162,8 +162,7 @@
                     <th>Clock-In</th>
                     <th>Clock-Out</th>
                     <th>Rendered Hours</th>
-                    <th>Description</th>
-                    <th></th>
+                    <th>ACTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -174,7 +173,6 @@
                     <td>9:00 AM</td>
                     <td>1:00 PM</td>
                     <td>4</td>
-                    <td>Sample description goes here.</td>
                     <td><a href="#">VIEW</a></td>
                 </tr>
             </tbody>
