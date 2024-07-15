@@ -24,5 +24,9 @@ class OjtDetail extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function getRemainingHoursAttribute()
+    {
+        return $this->required_hours - $this->rendered_hours;
+    }
 }
 

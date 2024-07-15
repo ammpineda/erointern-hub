@@ -162,12 +162,12 @@
 
     @include('navbar')
     @if ($user)
-    @if ( ( (0||null) == $user->ojtDetails->required_hours) || ( (0||null) == $user->ojtDetails->rendered_hours)|| ( (0||null) == $user->ojtDetails->remaining_hours)|| ( (0||null) == $user->ojtDetails->remaining_hours)||(null== $user->jobDetails->department)||(null== $user->jobDetails->job_title)||(null== $user->jobDetails->supervisor))
+    @if ( ( (0||null) == $user->ojtDetails->required_hours ) || (0||'Not Assigned') == $user->jobDetails->department )
     <div id="errorModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
     <div class="alert alert-warning" role="alert">
-        <i class="fa fa-exclamation-triangle"></i> The is still missing information in your profile. Please fill them up by visiting the profile page.
+        <i class="fa fa-exclamation-triangle"></i> There is still missing information in your profile. Please fill them up by visiting the profile page.
     </div></div>
     </div>
     @endif

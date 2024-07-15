@@ -295,11 +295,13 @@
 
                 <br>
                 <li class="list-group-item text-muted" style="color:#000000; font-size: 17px;"><strong>Overview</strong>  <i class="fa fa-dashboard fa-1x"></i></li>
-                <ul class="list-group"style="color: black">
+                <ul class="list-group" style="color: black">
+
                     <li class="list-group-item text-right">
                         <span class="pull-left"><strong>Department</strong></span>
-                        {{ $user->JobDetails ? $user->JobDetails->department : 'Fill Missing Details' }}
+                       <div>{{ $user->JobDetails ? $user->JobDetails->department : 'Fill Missing Details' }}</div>
                     </li>
+
                     <li class="list-group-item text-right">
                         <span class="pull-left"><strong>Rendered Hours</strong></span>
                         {{ $user->ojtDetails ? $user->ojtDetails->rendered_hours : 'Fill Missing Details' }}
@@ -314,7 +316,6 @@
                         {{ $user->ojtDetails ? $user->ojtDetails->remaining_hours : 'Fill Missing Details' }}
                     </li>
 
-                </li>
                 </ul>
 
             </div><!--/col-3-->
@@ -507,45 +508,28 @@
                                             <label for="required_hours">
                                                 <h4>Required Hours:</h4>
                                             </label>
-                                            <input type="number" class="form-control" id="required_hours"
-                                                name="required_hours"
-                                                value="{{ old($user->ojtDetails ? $user->ojtDetails->required_hours : '') }}">
+                                            @if(session('is_intern') == 'true')
+                                            <input type="number" class="form-control" id="required_hours" name="required_hours" value="{{ old('required_hours', $user->ojtDetails->required_hours ?? '') }}" readonly disabled>
+                                           @else
+                                            <input type="number" class="form-control" id="required_hours" name="required_hours" value="{{ old('required_hours', $user->ojtDetails->required_hours ?? '') }}">
+                                            @endif
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-6">
 
-                                        <div class="form-group">
-                                            <label for="rendered_hours">
-                                                <h4>Rendered Hours:</h4>
-                                            </label>
-                                            <input type="number" class="form-control" id="rendered_hours"
-                                                name="rendered_hours"
-                                                value="{{ old('rendered_hours', $user->ojtDetails ? $user->ojtDetails->rendered_hours : '') }}"disabled>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-xs-6">
-
-                                        <div class="form-group">
-                                            <label for="remaining_hours">
-                                                <h4>Remaining Hours:</h4>
-                                            </label>
-                                            <input type="number" class="form-control" id="remaining_hours"
-                                                name="remaining_hours"
-                                                value="{{ old('remaining_hours', $user->ojtDetails ? $user->ojtDetails->remaining_hours : '') }}"disabled>
-                                        </div>
-                                    </div>
 
                                     <div class="col-xs-6">
                                         <div class="form-group">
                                             <label for="has_endorsement_letter">
                                                 <h4>Has Endorsement Letter:</h4>
                                             </label>
-                                            <input type="checkbox" id="has_endorsement_letter"
-                                                name="has_endorsement_letter"
-                                                {{ old('has_endorsement_letter', $user->ojtDetails ? $user->ojtDetails->has_endorsement_letter : false) ? 'checked' : '' }}>
-                                        </div>
+                                            @if(session('is_intern') == 'true')
+                                            <input type="checkbox" id="has_endorsement_letter" name="has_endorsement_letter" {{ old('has_endorsement_letter', $user->ojtDetails ? $user->ojtDetails->has_endorsement_letter : false) ? 'checked' : '' }} disabled readonly>
+                                          @else
+                                            <input type="checkbox" id="has_endorsement_letter" name="has_endorsement_letter" {{ old('has_endorsement_letter', $user->ojtDetails ? $user->ojtDetails->has_endorsement_letter : false) ? 'checked' : '' }}>
+                                          @endif
+                                            </div>
                                     </div>
 
                                     <div class="col-xs-6">
@@ -553,9 +537,27 @@
                                             <label for="has_acceptance_letter">
                                                 <h4>Has Acceptance Letter:</h4>
                                             </label>
-                                            <input type="checkbox" id="has_acceptance_letter"
-                                                name="has_acceptance_letter"
-                                                {{ old('has_acceptance_letter', $user->ojtDetails ? $user->ojtDetails->has_acceptance_letter : false) ? 'checked' : '' }}>
+                                            @if(session('is_intern') == 'true')
+                                                    <input type="checkbox" class="form-check-input" id="has_acceptance_letter" name="has_acceptance_letter"
+                                                    {{ old('has_acceptance_letter', $user->ojtDetails ? $user->ojtDetails->has_acceptance_letter : false) ? 'checked' : '' }} disabled readonly>
+                                                    @else
+                                                    <input type="checkbox" class="form-check-input" id="has_acceptance_letter" name="has_acceptance_letter" {{ old('has_acceptance_letter', $user->ojtDetails ? $user->ojtDetails->has_acceptance_letter : false) ? 'checked' : '' }}>
+                                                    @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+
+                                        <div class="form-group">
+                                            <label for="onboard_at">
+                                                <h4>Onboard Date:</h4>
+                                            </label>
+                                            @if(session('is_intern') == 'true')
+                                            <input type="date" class="form-control" id="onboard_at" name="onboard_at"
+                                                value="{{ old('onboard_at', $user->ojtDetails ? $user->ojtDetails->onboard_at : '') }}" readonly disabled>
+                                            @else
+                                                <input type="date" class="form-control" id="onboard_at" name="onboard_at"
+                                                value="{{ old('onboard_at', $user->ojtDetails ? $user->ojtDetails->onboard_at : '') }}">
+                                                @endif
                                         </div>
                                     </div>
                                     <div class="col-xs-6">
@@ -564,21 +566,17 @@
                                             <label for="exit_at">
                                                 <h4>Exit Date:</h4>
                                             </label>
+                                            @if(session('is_intern') == 'true')
+
                                             <input type="date" class="form-control" id="exit_at" name="exit_at"
-                                                value="{{ old('exit_at', $user->ojtDetails ? $user->ojtDetails->exit_at : '') }}">
-                                        </div>
+                                                value="{{ old('exit_at', $user->ojtDetails ? $user->ojtDetails->exit_at : '') }}" readonly disabled>
+                                            @else
+                                            <input type="date" class="form-control" id="exit_at" name="exit_at"
+                                            value="{{ old('exit_at', $user->ojtDetails ? $user->ojtDetails->exit_at : '') }}">
+                                            @endif
                                     </div>
 
-                                    <div class="col-xs-6">
 
-                                        <div class="form-group">
-                                            <label for="onboard_at">
-                                                <h4>Exit Date:</h4>
-                                            </label>
-                                            <input type="date" class="form-control" id="onboard_at" name="onboard_at"
-                                                value="{{ old('onboard_at', $user->ojtDetails ? $user->ojtDetails->onboard_at : '') }}">
-                                        </div>
-                                    </div>
                                     <div class="form-group" style="text-align: left">
                                         <div class="col-xs-12">
                                             <br>

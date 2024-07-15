@@ -61,9 +61,9 @@ class AdminController extends Controller
             // Create JobDetail for the user with default values
             $jobDetail = new JobDetail();
             $jobDetail->user_id = $user->id;
-            $jobDetail->department = ''; // Default value
-            $jobDetail->job_title = ''; // Default value
-            $jobDetail->supervisor = ''; // Default value
+            $jobDetail->department = 'Not Assigned'; // Default value
+            $jobDetail->job_title = 'Not Assigned'; // Default value
+            $jobDetail->supervisor = 'Not Assigned'; // Default value
             $jobDetail->save();
 
             // Commit transaction
