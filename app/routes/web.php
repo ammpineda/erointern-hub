@@ -36,8 +36,7 @@ Route::get('intern/{id}/dars', [UserDARController::class, 'userDars'])->name('Sh
 
 Route::get('intern/{id}/profile',[ProfileController::class, 'edit'])->name('client-profile');
 Route::post('/user/{id}/update', [ProfileController::class, 'update'])->name('user.update');
-
-
+Route::post('user/{id}}/updatedp', [ProfileController::class, 'updateDP'])->name('user.updatedp');
 //route for login
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 //route for registering interns via admin
