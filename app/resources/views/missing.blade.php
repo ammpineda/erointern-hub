@@ -40,28 +40,21 @@
         }
 </style>
 
-@if ($errors->any() || session('error'))
-        <div id="errorModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h4>Authentication failed.</h4>
-                <p>
-                    @if ($errors->any())
-                        {{ $errors->first() }}
-                    @elseif (session('error'))
-                        {{ session('error') }}
-                    @endif
-                </p>
-            </div>
-
-        </div>
-
-    @endif
 
 
+@if ($user)
+@if (is_null($user->ojtDetails->required_hours) || is_null($user->jobDetails->department))
+<div id="errorModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+<div class="alert alert-warning" role="alert">
+    <i class="fa fa-exclamation-triangle"></i> There are no associated details for this user yet.
+</div></div>
+</div>
+@endif
+@endif
 
-
-
+@yield('content');
 <script>// Display the error modal on page load
 window.addEventListener('DOMContentLoaded', (event) => {
     const modal = document.getElementById('errorModal');
@@ -74,4 +67,3 @@ document.querySelector('.close').addEventListener('click', function() {
     modal.style.display = 'none';
 });
 </script>
-@yield('content')

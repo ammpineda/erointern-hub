@@ -17,20 +17,19 @@ class DashboardController extends Controller
 
         $latestAnnouncements = Announcement::latest()->limit(4)->get();
 
-        $userId = Session::get('id');
         $latestAnnouncements = Announcement::latest()->limit(4)->get();
         $dailyAccomplishments = DailyAccomplishment::where('user_id', $userId)
                                 ->latest()
                                 ->limit(4)
                                 ->get();
 
-
+        $user = User::with('jobDetails', 'ojtDetails')->findOrFail($userId);
 
 
         // Pass the $userId variable to the dashboard view
         return view('client.dashboard',compact('latestAnnouncements'))->with('userId', $userId)
         ->with('latestAnnouncements', $latestAnnouncements)
-        ->with('dailyAccomplishments', $dailyAccomplishments);
+        ->with('dailyAccomplishments', $dailyAccomplishments) -> with('user',$user);
 
     }
 

@@ -256,6 +256,16 @@
 
     {{-- start of refrennce --}}
     @include('error')
+    @if (is_null($user->ojtDetails->required_hours) || is_null($user->jobDetails->department))
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="alert alert-warning" role="alert">
+                <i class="fa fa-exclamation-triangle"></i> There are some missing details for this user.
+            </div>
+        </div>
+    </div>
+@endif
     <div class="container bootstrap snippet" style="background-color: rgb(255, 255, 255); padding-top: 10px; padding-bottom: 10px;border-radius: 1%;">
 
 
@@ -286,10 +296,23 @@
                 <br>
                 <li class="list-group-item text-muted" style="color:#000000; font-size: 17px;"><strong>Overview</strong>  <i class="fa fa-dashboard fa-1x"></i></li>
                 <ul class="list-group"style="color: black">
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Department</strong></span> {{$user->JobDetails->department}}</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Rendered Hours</strong></span>{{ $user->ojtDetails->rendered_hours }} <i class="fa fa-dashboard fa-1x"></i></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Required Hours</strong></span> {{$user->ojtDetails->required_hours}}</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Remaining Hours</strong></span> {{$user->ojtDetails->remaining_hours}}</li>
+                    <li class="list-group-item text-right">
+                        <span class="pull-left"><strong>Department</strong></span>
+                        {{ $user->JobDetails ? $user->JobDetails->department : 'Fill Missing Details' }}
+                    </li>
+                    <li class="list-group-item text-right">
+                        <span class="pull-left"><strong>Rendered Hours</strong></span>
+                        {{ $user->ojtDetails ? $user->ojtDetails->rendered_hours : 'Fill Missing Details' }}
+                        <i class="fa fa-dashboard fa-1x"></i>
+                    </li>
+                    <li class="list-group-item text-right">
+                        <span class="pull-left"><strong>Required Hours</strong></span>
+                        {{ $user->ojtDetails ? $user->ojtDetails->required_hours : 'Fill Missing Details' }}
+                    </li>
+                    <li class="list-group-item text-right">
+                        <span class="pull-left"><strong>Remaining Hours</strong></span>
+                        {{ $user->ojtDetails ? $user->ojtDetails->remaining_hours : 'Fill Missing Details' }}
+                    </li>
 
                 </li>
                 </ul>
@@ -419,7 +442,7 @@
                                         <h4>Department:</h4>
                                     </label>
                                     <input type="text" class="form-control" name="department" id="department"
-                                        value="{{ old('department', $user->JobDetails->department) }}" required>
+                                        value="{{ old('department',   $user->ojtDetails ? $user->JobDetails->department : '') }}" required>
 
                                 </div>
                             </div>
@@ -435,7 +458,7 @@
                                         <h4>Job Title:</h4>
                                     </label>
                                     <input type="text" class="form-control" id="job_title" name="job_title"
-                                        value="{{ old('job_title', $user->JobDetails->job_title) }}">
+                                        value="{{ old('job_title', $user->ojtDetails ? $user->JobDetails->job_title : '') }}">
                                 </div>
                             </div>
 
@@ -450,7 +473,7 @@
                                         <h4>Supervisor:</h4>
                                     </label>
                                     <input type="text" class="form-control" id="supervisor" name="supervisor"
-                                        value="{{ old('supervisor', $user->JobDetails->supervisor) }}">
+                                        value="{{ old('supervisor', $user->ojtDetails ? $user->JobDetails->supervisor : '') }}">
                                 </div>
                             </div>
 
@@ -486,7 +509,7 @@
                                             </label>
                                             <input type="number" class="form-control" id="required_hours"
                                                 name="required_hours"
-                                                value="{{ old('required_hours', $user->ojtDetails->required_hours) }}">
+                                                value="{{ old($user->ojtDetails ? $user->ojtDetails->required_hours : '') }}">
                                         </div>
                                     </div>
 
@@ -498,7 +521,7 @@
                                             </label>
                                             <input type="number" class="form-control" id="rendered_hours"
                                                 name="rendered_hours"
-                                                value="{{ old('rendered_hours', $user->ojtDetails->rendered_hours) }}"disabled>
+                                                value="{{ old('rendered_hours', $user->ojtDetails ? $user->ojtDetails->rendered_hours : '') }}"disabled>
                                         </div>
                                     </div>
 
@@ -510,46 +533,31 @@
                                             </label>
                                             <input type="number" class="form-control" id="remaining_hours"
                                                 name="remaining_hours"
-                                                value="{{ old('remaining_hours', $user->ojtDetails->remaining_hours) }}"disabled>
+                                                value="{{ old('remaining_hours', $user->ojtDetails ? $user->ojtDetails->remaining_hours : '') }}"disabled>
                                         </div>
                                     </div>
 
                                     <div class="col-xs-6">
-
                                         <div class="form-group">
                                             <label for="has_endorsement_letter">
                                                 <h4>Has Endorsement Letter:</h4>
                                             </label>
                                             <input type="checkbox" id="has_endorsement_letter"
                                                 name="has_endorsement_letter"
-                                                {{ old('has_endorsement_letter', $user->ojtDetails->has_endorsement_letter) ? 'checked' : '' }}>
+                                                {{ old('has_endorsement_letter', $user->ojtDetails ? $user->ojtDetails->has_endorsement_letter : false) ? 'checked' : '' }}>
                                         </div>
                                     </div>
 
                                     <div class="col-xs-6">
-
                                         <div class="form-group">
                                             <label for="has_acceptance_letter">
                                                 <h4>Has Acceptance Letter:</h4>
                                             </label>
                                             <input type="checkbox" id="has_acceptance_letter"
                                                 name="has_acceptance_letter"
-                                                {{ old('has_acceptance_letter', $user->ojtDetails->has_acceptance_letter) ? 'checked' : '' }}>
+                                                {{ old('has_acceptance_letter', $user->ojtDetails ? $user->ojtDetails->has_acceptance_letter : false) ? 'checked' : '' }}>
                                         </div>
                                     </div>
-
-                                    <div class="col-xs-6">
-
-                                        <div class="form-group">
-                                            <label for="onboard_at">
-                                                <h4>Onboard Date:</h4>
-                                            </label>
-                                            <input type="date" class="form-control" id="onboard_at"
-                                                name="onboard_at"
-                                                value="{{ old('onboard_at', $user->ojtDetails->onboard_at) }}">
-                                        </div>
-                                    </div>
-
                                     <div class="col-xs-6">
 
                                         <div class="form-group">
@@ -557,7 +565,18 @@
                                                 <h4>Exit Date:</h4>
                                             </label>
                                             <input type="date" class="form-control" id="exit_at" name="exit_at"
-                                                value="{{ old('exit_at', $user->ojtDetails->exit_at) }}">
+                                                value="{{ old('exit_at', $user->ojtDetails ? $user->ojtDetails->exit_at : '') }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-6">
+
+                                        <div class="form-group">
+                                            <label for="onboard_at">
+                                                <h4>Exit Date:</h4>
+                                            </label>
+                                            <input type="date" class="form-control" id="onboard_at" name="onboard_at"
+                                                value="{{ old('onboard_at', $user->ojtDetails ? $user->ojtDetails->onboard_at : '') }}">
                                         </div>
                                     </div>
                                     <div class="form-group" style="text-align: left">

@@ -158,7 +158,33 @@
 
 <body>
 
+
+
     @include('navbar')
+    @if ($user)
+    @if ( ( (0||null) == $user->ojtDetails->required_hours) || ( (0||null) == $user->ojtDetails->rendered_hours)|| ( (0||null) == $user->ojtDetails->remaining_hours)|| ( (0||null) == $user->ojtDetails->remaining_hours)||(null== $user->jobDetails->department)||(null== $user->jobDetails->job_title)||(null== $user->jobDetails->supervisor))
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+    <div class="alert alert-warning" role="alert">
+        <i class="fa fa-exclamation-triangle"></i> The is still missing information in your profile. Please fill them up by visiting the profile page.
+    </div></div>
+    </div>
+    @endif
+    @endif
+    <script>// Display the error modal on page load
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const modal = document.getElementById('errorModal');
+            modal.style.display = 'block';
+        });
+
+        // Close the error modal when close button is clicked
+        document.querySelector('.close').addEventListener('click', function() {
+            const modal = document.getElementById('errorModal');
+            modal.style.display = 'none';
+        });
+        </script>
+
     <br>
     <!-- Section for displaying rendered hours -->
 
@@ -231,5 +257,6 @@
 </section>
 </div>
 </body>
+@include('error')
 
 </html>
