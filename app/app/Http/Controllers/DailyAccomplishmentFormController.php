@@ -76,4 +76,25 @@ class DailyAccomplishmentFormController extends Controller
         return redirect()->route('login.form')->withErrors(['error' => 'You must be logged in to submit a Daily Accomplishment Report.']);
     }
 }
+public function approveDAR($id){
+    $dar = DailyAccomplishment::findOrFail($id);
+    $dar->is_approved = 1;
+    $dar->save();
+
+    $user = $dar->user;
+    $ojtDetails = $user->ojtDetails;
+    $clockIn = $dar->clock_in_at;
+    $clockOut = $dar->clock_out_at;
+
+    $clockInTime = Carbon::parse($clockIn);
+    $clockOutTime = Carbon::parse($clockOut);
+
+    $rendered_hours = $clockInTime->diffInHours($clockOutTime);
+
+    $ojtDetails->rendered_hours += $rendered_hours;
+    $ojtDetails->save();
+
+    return back();
+}
+
 }

@@ -84,15 +84,19 @@
     @include('navbar')
     <div class="container mt-5">
         <h1 class="mb-4">Recent Daily Accomplishment Reports</h1>
+    @if ($accomplishments->isEmpty())
+        <p>No unapproved DARs found.</p>
+        @else
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th style="width: 50px;">ID</th>
+                    <th>Date Submitted</th>
                     <th style="width: 250px;">User</th>
                     <th style="width: 300px;">Title</th>
-                    <th>Date Submitted</th>
                     <th>Clock In At</th>
                     <th>Clock Out At</th>
+                    <th>Status</th>
                     <th>Action</th>
 
                 </tr>
@@ -102,14 +106,21 @@
                 @foreach ($accomplishments as $accomplishment)
                 <tr>
                     <td>{{ $accomplishment->id }}</td>
+                    <td> {{ $accomplishment->created_at }} </td>
+
                     <td>{{ $accomplishment->user->first_name }} {{ $accomplishment->user->last_name }}</td>
 
                     <td>{{ $accomplishment->title }}</td>
-                    <td> {{ $accomplishment->created_at }} </td>
                     <td>{{ $accomplishment->clock_in_at }}</td>
                     <td>{{ $accomplishment->clock_out_at }}</td>
                     <td>
-                        <button class="viewbutton" onclick="openModal({{ $accomplishment->id }})">VIEW DETAILS</button>
+                        @if($accomplishment->is_approved)
+                          Approved
+                        @else
+                        Needs Review
+                        @endif
+                      </td>                    <td>
+                        <button class="viewbutton" onclick="openModal({{ $accomplishment->id }})">REVIEW REPORT</button>
                     </td>
                   </tr>
                   @endforeach
@@ -140,7 +151,7 @@
                     }
                   </style>
                 <div class="modal-content">
-                  <span class="close-button" onclick="closePopup()">&times;</span>
+
                   <h1>Title: {{ $accomplishment->title }}</h1>
                   <span class="small-text">{{ $accomplishment->created_at }}</span>
 
@@ -154,8 +165,16 @@
                   <h5>{{ $accomplishment->clock_out_at }}</h5>
 
                   <h2>Attachments link:</h2>
-                  <h5><a  style ="text-decoration:none; color:#767575;" href="{{ $accomplishment->attachment_file }}" target="_blank"> {{ $accomplishment->attachment_file }}</a></h5>                </div>
-              </div>
+                  <h5> <a  style ="text-decoration:none; color:#767575;" href="{{ $accomplishment->attachment_file }}" target="_blank"> {{ $accomplishment->attachment_file }}</a></h5>
+                  <button  onclick="closePopup()">close</button>
+                     <form action="{{ route('approveDAR', ['id' => $accomplishment->id]) }}" method="POST">
+      @csrf
+      <button type="submit">Approve</button>
+    </form>
+
+
+                </div>
+    </div>
 
               <script>
                 function openModal(id) {
@@ -167,7 +186,7 @@
                 }
 
           </script>
-
+@endif
     </div>
 
 
