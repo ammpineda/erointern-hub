@@ -9,6 +9,7 @@
     <!-- Custom CSS Link -->
     <link href="{{ asset('css/management/manage-interns.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
 
     <style>
         /* General styles */
@@ -27,6 +28,7 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            align-self: center
         }
 
         .search-container {
@@ -38,22 +40,42 @@
 
         .form-control {
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-            width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 200px;
+  margin-right: 10px; /* Adjust the margin as needed */
         }
 
-        .register-button {
-            padding: 10px 20px;
-            background-color: #2828DCFF;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
+        .button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.deactivated-button,
+.register-button {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.deactivated-button {
+  text-decoration: none;
+  background-color: rgba(82, 0, 1, 0.304);
+  margin-right: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  height: 45px;
+}
+
+.register-button {
+  background-color: #2828DCFF;
+}
 
         .intern-table {
             width: 100%;
@@ -234,7 +256,18 @@
     <div class="content-container">
         <div class="search-container">
             <input type="text" id="search-input" class="form-control" placeholder="Search..." />
-            <button class="register-button" onclick="openPopup()">Register Intern</button>
+
+
+            <div class="button-container">
+                <a class="deactivated-button" href="deactivated">
+                  <span class="material-symbols-outlined" style="vertical-align: middle;">person_off</span>
+                  Show Deactivated Interns
+                </a>
+                <button class="register-button" onclick="openPopup()">
+                  <span class="material-symbols-outlined" style="vertical-align: middle;">person_add</span>
+                  Register Intern
+                </button>
+              </div>
         </div>
         <table class="intern-table">
             <thead>
@@ -243,6 +276,8 @@
                     <th>Intern Name</th>
                     <th>Username</th>
                     <th>Email</th>
+                    <th>Rendered Hours</th>
+                    <th>Required Hours</th>
                     <th>Date Registered</th>
                     <th>Last Login Date</th>
                     <th>Actions</th>
@@ -250,20 +285,28 @@
             </thead>
             <tbody id="table-body">
                 @foreach ($interns as $intern)
+                @if ($intern->is_active)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $intern->last_name }}, {{ $intern->first_name }} {{ $intern->middle_name }}</td>
                     <td>{{ $intern->username }}</td>
                     <td>{{ $intern->email }}</td>
+                    <td>{{$intern->ojtDetails->rendered_hours}}</td>
+                    <td>{{$intern->ojtDetails->required_hours}}</td>
                     <td>{{ $intern->created_at }}</td>
                     <td>{{ $intern->last_login_at }}</td>
                     <td>
                         <div class="action-buttons">
                             <a href="{{ route('client-profile', ['id' => $intern->id]) }}" class="manage-details-button">Manage Details</a>
-                            <button class="deactivate-button">Deactivate</button>
+                            <form action="{{ route('deactivate-intern', ['id' => $intern->id]) }}" method="POST" style="display: inline;">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="deactivate-button">Deactivate</button>
+                            </form>
                         </div>
                     </td>
                 </tr>
+                @endif
                 @endforeach
             </tbody>
         </table>
@@ -272,7 +315,7 @@
     <div id="popup-form" class="popup-form">
         <div class="popup-content">
             <span class="close-button" onclick="closePopup()">&times;</span>
-            <h2 style="text-align: center; margin-bottom: 20px;">Register Intern</h2>
+            <h2 style="text-align: center; margin-bottom: 20px;">Deactivated interns</h2>
             <form action="{{ route('registerIntern') }}" method="post">
                 @csrf
                 <div class="form-group">

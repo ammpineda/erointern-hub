@@ -162,7 +162,7 @@
 
     @include('navbar')
     @if ($user)
-    @if ( ( (0||null) == $user->ojtDetails->required_hours ) || (0||'Not Assigned') == $user->jobDetails->department )
+    @if ( ( (0||null) == $user->ojtDetails->required_hours ) || ($user->jobDetails->department === null || $user->jobDetails->department === 'Not Assigned') )
     <div id="errorModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>

@@ -79,14 +79,30 @@ class AdminController extends Controller
             return redirect()->back()->withErrors(['error' => 'Failed to register intern. ' . $e->getMessage()]);
         }
     }
-
+    public function deactivatedInterns()
+    {
+        // Retrieve all users
+        $interns = User::where('type', 'intern')->with('jobDetails', 'ojtDetails')->get();        // Pass the users data to the view
+        return view('management.deactivated-interns', compact('interns'));
+    }
 
     public function manageInterns()
     {
-
         // Retrieve all users
-        $interns = User::where('type', 'intern')->get();
-        // Pass the users data to the view
+        $interns = User::where('type', 'intern')->with('jobDetails', 'ojtDetails')->get();        // Pass the users data to the view
         return view('management.manage-interns', compact('interns'));
     }
+    Public function deactivate($id)
+    {
+        // Find the intern by ID
+        $intern = User::findOrFail($id);
+
+        // Update the is_active value to false
+        $intern->is_active = false;
+        $intern->save();
+
+        // Redirect back or to a different page
+        return redirect()->back()->with('success', 'Intern deactivated successfully.');
+    }
 }
+

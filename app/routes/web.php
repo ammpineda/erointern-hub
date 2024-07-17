@@ -57,3 +57,9 @@ Route::get('admin/manage-announcements', [AnnouncementController::class, 'displa
 Route::post('/admin/add-announce', [AnnouncementController::class, 'addAnnouncement'])->name('add-announcement');
 
 Route::delete('/admin/delete-announce/{announcement}', [AnnouncementController::class, 'deleteAnnouncement'])->name('delete-announcement');
+
+Route::delete('/admin/delete-announce/{announcement}', [AnnouncementController::class, 'deleteAnnouncement'])->name('delete-announcement');
+
+Route::put('admin/manage-interns/{id}/deactivate', [AdminController::class, 'deactivate'])->name('deactivate-intern');
+
+Route::get('admin/deactivated', [AdminController::class, 'deactivatedInterns'])->name('display-deactivated');

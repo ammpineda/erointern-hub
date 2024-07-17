@@ -50,6 +50,33 @@
             padding: 7px 5px;
             width: 100%
         }
+        .modal-form {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #08106b;
+            /* Updated background color */
+            color: #fff;
+            /* Text color */
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 70%;
+            /* Adjusted width */
+            max-width: 400px;
+            /* Adjusted max-width */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
     </style>
 </head>
 
@@ -71,26 +98,82 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach ($accomplishments as $accomplishment)
                 <tr>
                     <td>{{ $accomplishment->id }}</td>
                     <td>{{ $accomplishment->user->first_name }} {{ $accomplishment->user->last_name }}</td>
-                    
+
                     <td>{{ $accomplishment->title }}</td>
                     <td> {{ $accomplishment->created_at }} </td>
                     <td>{{ $accomplishment->clock_in_at }}</td>
                     <td>{{ $accomplishment->clock_out_at }}</td>
-                    <td> <form  method="POST">
-                        @csrf
-                        @method('VIEW')
-                        <button type="submit" class="viewbutton">VIEW DETAILS</button>
-                    </form>
-                </td>
+                    <td>
+                        <button class="viewbutton" onclick="openModal({{ $accomplishment->id }})">VIEW DETAILS</button>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
 
-                    @endforeach
-            </tbody>
-        </table>
+              <div id="modal-form" class="modal-form">
+                <style>
+                    .small-text {
+                      font-size: 10px;
+                    }
+                    h1, h2, h5 {
+                      margin: 0;
+                      padding: 0;
+                    }
+                    h1 {
+                      font-size: 24px;
+                      font-weight: bold;
+                    }
+                    h2 {
+                      font-size: 18px;
+                      font-weight: bold;
+                      margin-top: 10px;
+                    }
+                    h5 {
+                      font-size: 14px;
+                      margin-top: 5px;
+                    }
+                  </style>
+                <div class="modal-content">
+                  <span class="close-button" onclick="closePopup()">&times;</span>
+                  <h1>Title: {{ $accomplishment->title }}</h1>
+                  <span class="small-text">{{ $accomplishment->created_at }}</span>
+
+                  <h2>Submitted by:</h2>
+                  <h5>{{ $accomplishment->user->first_name }} {{ $accomplishment->user->last_name }}</h5>
+
+                  <h2>Clock in at:</h2>
+                  <h5>{{ $accomplishment->clock_in_at }}</h5>
+
+                  <h2>Clock out at:</h2>
+                  <h5>{{ $accomplishment->clock_out_at }}</h5>
+
+                  <h2>Attachments link:</h2>
+                  <h5><a  style ="text-decoration:none; color:#767575;" href="{{ $accomplishment->attachment_file }}" target="_blank"> {{ $accomplishment->attachment_file }}</a></h5>                </div>
+              </div>
+
+              <script>
+                function openModal(id) {
+                  document.getElementById('modal-form').style.display = 'block';
+                }
+
+                function closePopup() {
+                  document.getElementById('modal-form').style.display = 'none';
+                }
+
+          </script>
+
     </div>
+
+
+
+
+
 </body>
 
 </html>
