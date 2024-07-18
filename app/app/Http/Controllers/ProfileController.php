@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\DailyAccomplishment;
 
 class ProfileController extends Controller
 {
     public function edit($id)
     {
         $user = User::with('jobDetails', 'ojtDetails')->findOrFail($id);
-        return view('client.profile', compact('user'));
+        $accomplishments = DailyAccomplishment::where('user_id', $id)->paginate(5); // Fetch accomplishments for the specific user
 
+        return view('client.profile', compact('user', 'accomplishments'));
             // Handle null values
 
     }

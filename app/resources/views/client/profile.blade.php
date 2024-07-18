@@ -80,6 +80,43 @@
         /* Adjust font size */
         margin-left: 15px;
     }
+    .viewbutton {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+            border: none;
+            padding: 7px 5px;
+            width: 100%
+        }
+        .modal-form {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-conten {
+            background-color: #08106b;
+            /* Updated background color */
+            color: #fff;
+            /* Text color */
+            margin:200px auto;
+
+            padding: 20px;
+            border-radius: 8px;
+            width: 70%;
+            /* Adjusted width */
+            max-width: 400px;
+            /* Adjusted max-width */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
 </style>
 </head>
 
@@ -93,168 +130,8 @@
         }
     </style>
 
-    {{-- <div class="custom-navbar">
-
-    <!-- Modal Structure -->
-    <div class="modal fade" id="incompleteModal" tabindex="-1" role="dialog" aria-labelledby="incompleteModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="incompleteModalLabel">Incomplete Intern Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Intern details incomplete! Please fill up the missing information.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function validateForm() {
-            // Check if first_name, last_name, and email are empty
-            var firstName = document.getElementById('first_name').value.trim();
-            var lastName = document.getElementById('last_name').value.trim();
-            var email = document.getElementById('email').value.trim();
-
-            // Check if required_hours, department, and job_title are empty
-            var requiredHours = document.getElementById('required_hours').value.trim();
-            var department = document.getElementById('department').value.trim();
-            var jobTitle = document.getElementById('job_title').value.trim();
-
-            if (firstName === '' || lastName === '' || email === '' ||
-                requiredHours === '' || department === '' || jobTitle === '') {
-                // Show the modal
-                $('#incompleteModal').modal('show');
-                return false; // Prevent form submission
-            }
-            return true; // Allow form submission
-        }
-    </script>
-
-    <div class="container">
-        <h1>{{ $user->first_name }} {{ $user->last_name }}'s Profile</h1>
-
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        <form method="POST" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data">
-            @csrf
-            <!-- Personal Information Section -->
-            <div class="profile-section">
-                <h2>Personal Information</h2>
-                <div class="form-group">
-                    <label for="first_name">First Name:</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name"
-                        value="{{ old('first_name', $user->first_name) }}" required>
-                </div>
-                <div class="form-group">
-                    <label for="middle_name">Middle Name:</label>
-                    <input type="text" class="form-control" id="middle_name" name="middle_name"
-                        value="{{ old('middle_name', $user->middle_name) }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="last_name">Last Name:</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name"
-                        value="{{ old('last_name', $user->last_name) }}" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" name="email"
-                        value="{{ old('email', $user->email) }}" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password (leave blank to keep current password):</label>
-                    <input type="password" class="form-control" id="password" name="password">
-                </div>
-                <div class="form-group">
-                    <label for="password_confirmation">Confirm Password:</label>
-                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
-                </div>
-                <div class="form-group">
-                    <label for="display_picture">Display Picture:</label>
-                    <input type="file" class="form-control" id="display_picture" name="display_picture">
-                </div>
-                <button type="submit" class="btn btn-primary">Update Personal Info</button>
-            </div>
-
-            <!-- Work Information Section -->
-            <div class="profile-section">
-                <h2>Work Information</h2>
-                <div class="form-group">
-                    <label for="department">Department:</label>
-                    <input type="text" class="form-control" id="department" name="department"
-                        value="{{ old('department', $user->department) }}">
-                </div>
-                <div class="form-group">
-                    <label for="job_title">Job Title:</label>
-                    <input type="text" class="form-control" id="job_title" name="job_title"
-                        value="{{ old('job_title', $user->job_title) }}">
-                </div>
-                <div class="form-group">
-                    <label for="supervisor">Supervisor:</label>
-                    <input type="text" class="form-control" id="supervisor" name="supervisor"
-                        value="{{ old('supervisor', $user->supervisor) }}">
-                </div>
-                <button type="submit" class="btn btn-primary">Update Work Info</button>
-            </div>
-
-            <!-- Additional Information Section -->
-            <div class="profile-section">
-                <h2>Internship Status</h2>
-                <div class="form-group">
-                    <label for="required_hours">Required Hours:</label>
-                    <input type="number" class="form-control" id="required_hours" name="required_hours"
-                        value="{{ old('required_hours', $user->required_hours) }}">
-                </div>
-                <div class="form-group">
-                    <label for="rendered_hours">Rendered Hours:</label>
-                    <input type="number" class="form-control" id="rendered_hours" name="rendered_hours"
-                        value="{{ old('rendered_hours', $user->rendered_hours) }}">
-                </div>
-                <div class="form-group">
-                    <label for="remaining_hours">Remaining Hours:</label>
-                    <input type="number" class="form-control" id="remaining_hours" name="remaining_hours"
-                        value="{{ old('remaining_hours', $user->remaining_hours) }}">
-                </div>
-                <div class="form-group">
-                    <label for="has_endorsement_letter">Has Endorsement Letter:</label>
-                    <input type="checkbox" id="has_endorsement_letter" name="has_endorsement_letter"
-                        {{ old('has_endorsement_letter', $user->has_endorsement_letter) ? 'checked' : '' }}>
-                </div>
-                <div class="form-group">
-                    <label for="has_acceptance_letter">Has Acceptance Letter:</label>
-                    <input type="checkbox" id="has_acceptance_letter" name="has_acceptance_letter"
-                        {{ old('has_acceptance_letter', $user->has_acceptance_letter) ? 'checked' : '' }}>
-                </div>
-                <div class="form-group">
-                    <label for="onboard_at">Onboard Date:</label>
-                    <input type="date" class="form-control" id="onboard_at" name="onboard_at"
-                        value="{{ old('onboard_at', $user->onboard_at) }}">
-                </div>
-                <div class="form-group">
-                    <label for="exit_at">Exit Date:</label>
-                    <input type="date" class="form-control" id="exit_at" name="exit_at"
-                        value="{{ old('exit_at', $user->exit_at) }}">
-                </div>
-                <button type="submit" class="btn btn-primary">Update Additional Info</button>
-            </div>
-
-        </form>
-    </div> --}}
 
 
-    {{-- start of refrennce --}}
     @include('error')
     @if (is_null($user->ojtDetails->required_hours) || is_null($user->jobDetails->department))
     <div id="errorModal" class="modal">
@@ -271,11 +148,6 @@
 
         <div class="row">
             <div class="col-sm-3"><!--left col-->
-
-
-
-
-
                 <form id="updatedp" method="post" action="{{ route('user.updatedp', $user->id) }}"
                     enctype="multipart/form-data">
                     @csrf
@@ -419,23 +291,12 @@
 
 
 
-
-
-
-
-
-
-
                     </div><!--/tab-pane-->
                     <div class="tab-pane" id="work">
                         <h2></h2>
 
                         <form method="POST" action="{{ route('user.update', $user->id) }}" id="form">
                             @csrf
-
-
-
-
                             <div class="form-group">
 
                                 <div class="col-xs-6">
@@ -444,7 +305,6 @@
                                     </label>
                                     <input type="text" class="form-control" name="department" id="department"
                                         value="{{ old('department',   $user->ojtDetails ? $user->JobDetails->department : '') }}" required>
-
                                 </div>
                             </div>
 
@@ -462,10 +322,6 @@
                                         value="{{ old('job_title', $user->ojtDetails ? $user->JobDetails->job_title : '') }}">
                                 </div>
                             </div>
-
-
-
-
 
                             <div class="form-group">
 
@@ -515,9 +371,6 @@
                                             @endif
                                         </div>
                                     </div>
-
-
-
 
                                     <div class="col-xs-6">
                                         <div class="form-group">
@@ -596,7 +449,112 @@
 
         </div><!--/col-9-->
     </div><!--/row-->
+    <div>
+        <hr>
+    <div class="container mt-5">
+        <h1 class="mb-4"style="margin-top:500px;">Recent Daily Accomplishment Reports</h1>
+    @if ($accomplishments->isEmpty())
+        <p>No DARs found.</p>
+        @else
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 50px;">ID</th>
+                    <th>Date Submitted</th>
+                    <th style="width: 250px;">User</th>
+                    <th style="width: 300px;">Title</th>
+                    <th>Clock In At</th>
+                    <th>Clock Out At</th>
+                    <th>Status</th>
+                    <th>Action</th>
 
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach ($accomplishments as $accomplishment)
+                <tr>
+                    <td>{{ $accomplishment->id }}</td>
+                    <td> {{ $accomplishment->created_at }} </td>
+
+                    <td>{{ $accomplishment->user->first_name }} {{ $accomplishment->user->last_name }}</td>
+
+                    <td>{{ $accomplishment->title }}</td>
+                    <td>{{ $accomplishment->clock_in_at }}</td>
+                    <td>{{ $accomplishment->clock_out_at }}</td>
+                    <td>
+                        @if($accomplishment->is_approved)
+                          Approved
+                        @else
+                        Needs Review
+                        @endif
+                      </td>                    <td>
+                        <button class="viewbutton" onclick="openModal({{ $accomplishment->id }})">VIEW REPORT</button>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+              {{ $accomplishments->links() }} <!-- Pagination links -->
+              <div id="modal-form" class="modal-form">
+                <style>
+                    .small-text {
+                      font-size: 10px;
+                    }
+                    h1, h2, h5 {
+                      margin: 0;
+                      padding: 0;
+                    }
+                    h1 {
+                      font-size: 24px;
+                      font-weight: bold;
+                    }
+                    h2 {
+                      font-size: 18px;
+                      font-weight: bold;
+                      margin-top: 10px;
+                    }
+                    h5 {
+                      font-size: 14px;
+                      margin-top: 5px;
+                    }
+                  </style>
+                <div class="modal-conten">
+
+                  <h1>Title: {{ $accomplishment->title }}</h1>
+                  <span class="small-text">{{ $accomplishment->created_at }}</span>
+
+                  <h2>Submitted by:</h2>
+                  <h5>{{ $accomplishment->user->first_name }} {{ $accomplishment->user->last_name }}</h5>
+
+                  <h2>Clock in at:</h2>
+                  <h5>{{ $accomplishment->clock_in_at }}</h5>
+
+                  <h2>Clock out at:</h2>
+                  <h5>{{ $accomplishment->clock_out_at }}</h5>
+
+                  <h2>Attachments link:</h2>
+                  <h5> <a  style ="text-decoration:none; color:#767575;" href="{{ $accomplishment->attachment_file }}" target="_blank"> {{ $accomplishment->attachment_file }}</a></h5>
+                  <button  onclick="closePopup()" style="color: #000000">CLOSE</button>
+
+
+
+                </div>
+    </div>
+
+              <script>
+                function openModal(id) {
+                  document.getElementById('modal-form').style.display = 'block';
+                }
+
+                function closePopup() {
+                  document.getElementById('modal-form').style.display = 'none';
+                }
+
+          </script>
+@endif
+    </div>
+    </div>
 </body>
 
 </html>
