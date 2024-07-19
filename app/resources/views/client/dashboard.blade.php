@@ -249,7 +249,7 @@
         </tbody>
     </table>
     <div style="text-align: center; padding: 5px; margin: 10px;">
-        <a href="{{ route('ShowUserDars', ['id' => $userId]) }}" style="color:white; text-decoration:none;"
+        <a href="{{ route('client-profile', Session::get('id')) }}" style="color:white; text-decoration:none;"
             class="manage-btn">VIEW DAILY REPORTS</a>&nbsp&nbsp
         <a href="dar" style="color:white; text-decoration:none;" class="manage-btn">CLOCK IN</a>
     </div>

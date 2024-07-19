@@ -154,7 +154,7 @@
                     <div class="text-center">
                         @if ($user->display_picture)
                             <img src="{{ asset('storage/' . $user->display_picture) }}"
-                                style="width: 150px; height: 150px; border: solid; margin:10px;" alt="avatar">
+                            class="avatar img-circle img-thumbnail" alt="avatar">
                         @else
                             <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
                                 class="avatar img-circle img-thumbnail" alt="avatar">
@@ -450,11 +450,11 @@
         </div><!--/col-9-->
     </div><!--/row-->
     <div>
-        <hr>
+        <hr><br>
     <div class="container mt-5">
-        <h1 class="mb-4"style="margin-top:500px;">Recent Daily Accomplishment Reports</h1>
+        <h1 class="mb-4"style="margin-top:500px;">All Daily Accomplishment Reports</h1>
     @if ($accomplishments->isEmpty())
-        <p>No DARs found.</p>
+        <p>No DARs found for this intern.</p>
         @else
         <table class="table table-bordered">
             <thead>

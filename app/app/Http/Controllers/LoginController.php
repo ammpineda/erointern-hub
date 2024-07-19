@@ -24,7 +24,7 @@ class LoginController extends Controller
         }
 
         // change to password_verify later
-        if ($request->password !== $user->password) {
+        if (!password_verify($request->password, $user->password)) {
             return redirect()->back()->withErrors(['error' => 'Incorrect Password.']);
         }
 
