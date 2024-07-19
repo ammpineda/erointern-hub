@@ -461,7 +461,6 @@
                 <tr>
                     <th style="width: 50px;">ID</th>
                     <th>Date Submitted</th>
-                    <th style="width: 250px;">User</th>
                     <th style="width: 300px;">Title</th>
                     <th>Clock In At</th>
                     <th>Clock Out At</th>
@@ -477,7 +476,6 @@
                     <td>{{ $accomplishment->id }}</td>
                     <td> {{ $accomplishment->created_at }} </td>
 
-                    <td>{{ $accomplishment->user->first_name }} {{ $accomplishment->user->last_name }}</td>
 
                     <td>{{ $accomplishment->title }}</td>
                     <td>{{ $accomplishment->clock_in_at }}</td>

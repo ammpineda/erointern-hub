@@ -231,7 +231,7 @@
                 <th>Title</th>
                 <th>Clock-In</th>
                 <th>Clock-Out</th>
-                <th>Rendered Hours</th>
+                <th>Status</th>
                 <th>Description</th>
             </tr>
         </thead>
@@ -242,7 +242,11 @@
                     <td style="color:black;">{{ $dailyAccomplishment->title }}</td>
                     <td style="color:black;">{{ $dailyAccomplishment->clock_in_at }}</td>
                     <td style="color:black;">{{ $dailyAccomplishment->clock_out_at }}</td>
-                    <td style="color:black;">{{ $dailyAccomplishment->rendered_hours }}</td>
+                    <td style="color:black;">@if($dailyAccomplishment->is_approved)
+                          Approved
+                        @else
+                        Needs Review
+                        @endif</td>
                     <td style="color:black;">{{ $dailyAccomplishment->description }}</td>
                 </tr>
             @endforeach
