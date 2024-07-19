@@ -166,10 +166,10 @@
 
                   <h2>Attachments link:</h2>
                   <h5> <a  style ="text-decoration:none; color:#767575;" href="{{ $accomplishment->attachment_file }}" target="_blank"> {{ $accomplishment->attachment_file }}</a></h5>
-                  <button  onclick="closePopup()">close</button>
+                  <button  onclick="closePopup()">CLOSE</button>
                      <form action="{{ route('approveDAR', ['id' => $accomplishment->id]) }}" method="POST">
       @csrf
-      <button type="submit">Approve</button>
+      <button type="submit">APPROVE</button>
     </form>
 
 

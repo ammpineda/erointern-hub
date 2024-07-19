@@ -50,7 +50,7 @@ class DailyAccomplishmentFormController extends Controller
 
         if ($existingDAR) {
             // User has already submitted a DAR for the same day
-            return redirect()->route('intern-dashboard')->withErrors(['error' => 'You have already submitted a Daily Accomplishment Report for today.']);
+            return redirect()->back()->withErrors(['error' => 'You have already submitted a Daily Accomplishment Report for today.']);
         }
 
         //creates converts time from clock in input to format acceptable to db
@@ -70,7 +70,7 @@ class DailyAccomplishmentFormController extends Controller
         $dar->save();
 
         // Redirect back with success message
-        return redirect()->back()->with('success', 'Daily Accomplishment Report submitted successfully!');
+        return redirect()->route('intern-dashboard')->with('success', 'Daily Accomplishment Report submitted successfully!');
     } else {
         // User is not logged in, handle this scenario (e.g., redirect to login page)
         return redirect()->route('login.form')->withErrors(['error' => 'You must be logged in to submit a Daily Accomplishment Report.']);

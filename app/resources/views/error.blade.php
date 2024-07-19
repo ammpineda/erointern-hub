@@ -23,6 +23,7 @@
             width: 80%;
             max-width: 400px;
             text-align: center;
+            color:white;
         }
 
         .close {
@@ -44,7 +45,7 @@
         <div id="errorModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h4>Authentication failed.</h4>
+                <h4>Error occurred!</h4>
                 <p>
                     @if ($errors->any())
                         {{ $errors->first() }}

@@ -41,8 +41,8 @@
 
         <hr class="section-divider" style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
 
-        <p class="form-instructions" style="margin-bottom: 20px;">
-        <strong>NOTE!</strong> Please create a repository to store your proof of accomplishments for today (e.g., Marki photos for clock in and clock out, screenshots of completed tasks or progress). Ensure the clarity of these items to avoid delays in report approval.
+        <p class="form-instructions" style="margin-bottom: 20px; font-size:small">
+        <strong>NOTE!</strong> Please create a repository to store your proof of accomplishments for today (e.g., Marki photos for clock in and clock out, screenshots of completed tasks or progress). Ensure the clarity of these items to avoid delays in report approval. You may not modify your today's report after the submission.
         </p>
 
         @include('error')
@@ -59,7 +59,7 @@
 
         <div class="form-buttons" style="text-align: center;">
             <span style="display: inline-block;">
-                <button type="submit" style="width: 130px; font-size: large; height: 40px; padding: 10px; text-align: center; text-decoration: none; background-color: #4CAF50; color: white; border: none; border-radius: 5px; margin-right: 10px;">Submit</button>
+                <button type="submit" onClick="return confirm('Are you sure? You cannot modify your submission after this.')" style="width: 130px; font-size: large; height: 40px; padding: 10px; text-align: center; text-decoration: none; background-color: #4CAF50; color: white; border: none; border-radius: 5px; margin-right: 10px;">Submit</button>
                 <a href="dashboard" style="width: 100px; font-size: medium; padding: 10px; text-align: center; text-decoration: none; background-color: #f44336; color: white; border: none; border-radius: 5px;">Go Back</a>
             </span>
         </div>

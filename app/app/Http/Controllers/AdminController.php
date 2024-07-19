@@ -43,7 +43,7 @@ class AdminController extends Controller
             $user->middle_name = $request->input('middle_name');
             $user->last_name = $request->input('last_name');
             $user->email = $request->input('email');
-            $user->password = bcrypt($request->input('password')); // Ensure to hash the password
+            $user->password = $request->input('password'); // Ensure to hash the password
             $user->save();
 
             // Create OjtDetail for the user with default values
