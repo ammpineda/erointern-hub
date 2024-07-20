@@ -315,7 +315,7 @@
     <div id="popup-form" class="popup-form">
         <div class="popup-content">
             <span class="close-button" onclick="closePopup()">&times;</span>
-            <h2 style="text-align: center; margin-bottom: 20px;">Deactivated interns</h2>
+            <h2 style="text-align: center; margin-bottom: 20px;">Intern Registration</h2>
             <form action="{{ route('registerIntern') }}" method="post">
                 @csrf
                 <div class="form-group">

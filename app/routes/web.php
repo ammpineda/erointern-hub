@@ -20,9 +20,9 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('intern-dashboard');
 Route::get('/admin/dashboard', [DashboardController::class, 'ManagementDash'])->name('admin-dashboard');
 
-Route::get('/dar', function () {
-    return view('client/dar-form');
-});
+
+Route::get('/dar', [DailyAccomplishmentFormController::class, 'showDarForm'])->name('dar-form');
+
 
 Route::get('/announcement', function () {
     return view('client/announcement');

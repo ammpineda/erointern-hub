@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Session;
 
 class DailyAccomplishmentFormController extends Controller
 {
+    public function showDarForm()
+    {
+        if (session('is_admin') === true && session('is_intern') === false) {
+            return redirect()->back(); // or any other route you want to redirect to
+        }
+
+        return view('client/dar-form'); // make sure this matches your view file name
+    }
+
     public function ShowAccomplishment($id){
         $accomplishment = DailyAccomplishment::with('User')->findOrFail($id);
         return view('management.manage-dars', compact('accomplishment'));
