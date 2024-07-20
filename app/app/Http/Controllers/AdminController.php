@@ -104,5 +104,18 @@ class AdminController extends Controller
         // Redirect back or to a different page
         return redirect()->back()->with('success', 'Intern deactivated successfully.');
     }
+
+    Public function activate($id)
+    {
+        // Find the intern by ID
+        $intern = User::findOrFail($id);
+
+        // Update the is_active value to false
+        $intern->is_active = true;
+        $intern->save();
+
+        // Redirect back or to a different page
+        return redirect()->back()->with('success', 'Intern activated successfully.');
+    }
 }
 

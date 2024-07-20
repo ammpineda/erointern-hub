@@ -72,6 +72,7 @@
                         <th>Required Hours</th>
                         <th>Date Registered</th>
                         <th>Last Login Date</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">
@@ -86,6 +87,13 @@
                                 <td>{{ $intern->ojtDetails->required_hours }}</td>
                                 <td>{{ $intern->created_at }}</td>
                                 <td>{{ $intern->last_login_at }}</td>
+                                <td> <form action="{{ route('activate-intern', ['id' => $intern->id]) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="activate-button">REACTIVATE</button>
+                                </form>
+                            </td>
+
 
                             </tr>
                         @endif

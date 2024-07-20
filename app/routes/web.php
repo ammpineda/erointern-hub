@@ -62,6 +62,11 @@ Route::delete('/admin/delete-announce/{announcement}', [AnnouncementController::
 
 Route::put('admin/manage-interns/{id}/deactivate', [AdminController::class, 'deactivate'])->name('deactivate-intern');
 
+Route::put('admin/manage-interns/{id}/activate', [AdminController::class, 'activate'])->name('activate-intern');
+
+
 Route::get('admin/deactivated', [AdminController::class, 'deactivatedInterns'])->name('display-deactivated');
 
 Route::post('admin/manage-dars/{id}/approve', [DailyAccomplishmentFormController::class, 'approveDAR'])->name('approveDAR');
+Route::post('admin/manage-dars/{id}/reject', [DailyAccomplishmentFormController::class, 'rejectDAR'])->name('rejectDAR');
+

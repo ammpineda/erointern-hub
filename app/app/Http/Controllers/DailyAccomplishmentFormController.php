@@ -5,6 +5,7 @@ use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 use App\Models\DailyAccomplishment;
+use App\Models\User;
 use Illuminate\Support\Facades\Session;
 
 class DailyAccomplishmentFormController extends Controller
@@ -43,16 +44,21 @@ class DailyAccomplishmentFormController extends Controller
 
         // Check if the user has already submitted a DAR for the same day
         $userId = Session::get('id');
+        $user = User::with('jobDetails', 'ojtDetails')->findOrFail($userId);
         $today = Carbon::today();
         $existingDAR = DailyAccomplishment::where('user_id', $userId)
                                         ->whereDate('created_at', $today)
                                         ->first();
+        $ojtDetails = $user-> ojtDetails;
+        $required_hours =  $ojtDetails-> required_hours;
 
         if ($existingDAR) {
             // User has already submitted a DAR for the same day
             return redirect()->back()->withErrors(['error' => 'You have already submitted a Daily Accomplishment Report for today.']);
         }
-
+        if ($required_hours <= 0) {
+            return redirect()->back()->withErrors(['error' => 'You have not specified your required OJT hours yet. Please visit your profile page.']);
+        }
         //creates converts time from clock in input to format acceptable to db
         $clockIn = Carbon::createFromFormat('H:i', $validatedData['clock_in_at']);
         $clockOut = Carbon::createFromFormat('H:i', $validatedData['clock_out_at']);
@@ -95,6 +101,13 @@ public function approveDAR($id){
     $ojtDetails->save();
 
     return back();
+}
+public function rejectDAR($id){
+    $dar = DailyAccomplishment::findOrFail($id);
+
+    $dar->delete();
+    return back();
+
 }
 
 }

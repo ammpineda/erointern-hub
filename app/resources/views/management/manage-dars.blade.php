@@ -171,6 +171,10 @@
       @csrf
       <button type="submit">APPROVE</button>
     </form>
+    <form action="{{ route('rejectDAR', ['id' => $accomplishment->id]) }}" method="POST">
+        @csrf
+        <button type="submit">REJECT</button>
+      </form>
 
 
                 </div>
